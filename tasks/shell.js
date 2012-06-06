@@ -1,6 +1,6 @@
 /*
  * grunt-shell
- * 0.1.0 - 2012-06-04
+ * 0.1.1 - 2012-06-06
  * github.com/sindresorhus/grunt-shell
  *
  * (c) Sindre Sorhus
@@ -16,7 +16,7 @@ module.exports = function( grunt ) {
 	grunt.registerMultiTask( 'shell', 'Run shell commands', function() {
 		var exec = require('child_process').exec;
 		var done = this.async();
-		var data = _.extend( grunt.config.get('shell')._options, this.data );
+		var data = _.extend( [], grunt.config.get('shell')._options, this.data );
 		var dataOut = data.stdout;
 		var dataErr = data.stderr;
 
