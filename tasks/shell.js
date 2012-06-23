@@ -44,7 +44,8 @@ module.exports = function( grunt ) {
 				}
 			}
 
-			done();
+		}).on('exit', function(code, signal){
+			return done(code === 0);
 		});
 	});
 };
