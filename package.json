@@ -1,6 +1,6 @@
 {
 	"name": "grunt-shell",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Grunt task to run shell commands",
 	"keywords": [
 		"gruntplugin",
@@ -24,7 +24,7 @@
 		"url": "git://github.com/sindresorhus/grunt-shell.git"
 	},
 	"dependencies": {
-		"grunt": "~0.3.9"
+		"grunt": "~0.3.10"
 	},
 	"engines": {
 		"node": ">=0.6.0"

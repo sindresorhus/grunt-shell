@@ -1,6 +1,6 @@
 /*
  * grunt-shell
- * 0.1.1 - 2012-06-06
+ * 0.1.2 - 2012-06-28
  * github.com/sindresorhus/grunt-shell
  *
  * (c) Sindre Sorhus
@@ -34,13 +34,13 @@ module.exports = function( grunt ) {
 				}
 			}
 
-			if ( stderr ) {
+			if ( err ) {
 				if ( _.isFunction( dataErr ) ) {
-					dataErr( stdout );
+					dataErr( stderr );
+				} else if ( data.failOnError === true ) {
+					grunt.fatal( err );
 				} else if ( dataErr === true ) {
 					log.error( err );
-				} else if ( data.failOnError ) {
-					grunt.fatal( err );
 				}
 			}
 
