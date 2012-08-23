@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/sindresorhus/grunt-shell.png)](http://travis-ci.org/sindresorhus/grunt-shell)
 # grunt-shell
 
 [Grunt][grunt] task to run shell commands.
