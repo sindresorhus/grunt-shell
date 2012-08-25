@@ -1,13 +1,15 @@
 {
 	"name": "grunt-shell",
-	"version": "0.1.2",
+	"version": "0.1.3",
 	"description": "Grunt task to run shell commands",
 	"keywords": [
 		"gruntplugin",
 		"grunt",
 		"shell",
 		"command",
+		"cmd",
 		"exec",
+		"spawn",
 		"cli"
 	],
 	"homepage": "https://github.com/sindresorhus/grunt-shell",
@@ -23,11 +25,11 @@
 		"type": "git",
 		"url": "git://github.com/sindresorhus/grunt-shell.git"
 	},
-	"dependencies": {
-		"grunt": "~0.3.10"
+	"devDependencies": {
+		"grunt": "~0.3.12"
 	},
 	"engines": {
-		"node": ">=0.6.0"
+		"node": ">=0.8.0"
 	},
 	"licenses": {
 		"type": "MIT"
