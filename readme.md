@@ -36,6 +36,18 @@ shell: {
 }
 ```
 
+Command expand templates :
+
+```javascript
+test_dir: 'test',
+shell: {
+	make_directory: {
+		command: 'mkdir <% test_dir %>'
+	}
+}
+```
+
+
 
 #### Run command and display output
 
