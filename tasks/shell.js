@@ -36,7 +36,7 @@ module.exports = function( grunt ) {
 
 			if ( stderr ) {
 				if ( _.isFunction( dataErr ) ) {
-					dataOut( stderr );
+					dataErr( stderr );
 				} else if ( dataErr === true ) {
 					log.write( stderr );
 				}
