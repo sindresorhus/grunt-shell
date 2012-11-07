@@ -15,6 +15,14 @@ module.exports = function( grunt ) {
 					cwd: './tasks'
 				}
 			},
+			subfolder_ls_to_stderr: {
+				command: 'ls > /dev/stderr',
+				stderr: true,
+				failOnError: false,
+				execOptions: {
+					cwd: './tasks'
+				}
+			},
 			_options: {
 				stdout: log
 			}
