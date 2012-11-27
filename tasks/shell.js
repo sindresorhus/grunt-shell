@@ -25,6 +25,10 @@ module.exports = function( grunt ) {
 			return;
 		}
 
+        if (data.process) {
+            data.command = grunt.template.process(data.command,grunt.config());
+        }
+
 		exec( data.command, data.execOptions, function( err, stdout, stderr ) {
 			if ( stdout ) {
 				if ( _.isFunction( dataOut ) ) {
