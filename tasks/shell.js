@@ -61,9 +61,9 @@ module.exports = function( grunt ) {
 				if ( _.isFunction( dataErr ) ) {
 					dataErr( stderr );
 				} else if ( data.failOnError === true ) {
-					grunt.fatal( err );
+					grunt.fatal( stderr );
 				} else if ( dataErr === true ) {
-					log.error( err );
+					log.error( stderr );
 				}
 			}
 		});
