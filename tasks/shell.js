@@ -25,7 +25,7 @@ module.exports = function( grunt ) {
 			return;
 		}
 
-		exec( data.command, data.execOptions, function( err, stdout, stderr ) {
+		var childProcess = exec( data.command, data.execOptions, function( err, stdout, stderr ) {
 			if ( stdout ) {
 				if ( _.isFunction( dataOut ) ) {
 					dataOut( stdout );
@@ -45,6 +45,27 @@ module.exports = function( grunt ) {
 			}
 
 			done();
+		});
+
+		childProcess.stdout.on('data', function(stdout){
+			if ( stdout ) {
+				if ( _.isFunction( dataOut ) ) {
+					dataOut( stdout );
+				} else if ( dataOut === true ) {
+					log.write( stdout );
+				}
+			}
+		});
+		childProcess.stderr.on('data', function(stderr){
+			if ( stderr ) {
+				if ( _.isFunction( dataErr ) ) {
+					dataErr( stderr );
+				} else if ( data.failOnError === true ) {
+					grunt.fatal( err );
+				} else if ( dataErr === true ) {
+					log.error( err );
+				}
+			}
 		});
 	});
 };
