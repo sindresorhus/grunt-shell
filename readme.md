@@ -42,7 +42,7 @@ Command expand templates :
 test_dir: 'test',
 shell: {
 	make_directory: {
-		command: 'mkdir <% test_dir %>'
+		command: 'mkdir <%= test_dir %>'
 	}
 }
 ```
