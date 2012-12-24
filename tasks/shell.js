@@ -10,7 +10,7 @@
 module.exports = function( grunt ) {
 	'use strict';
 
-	var _ = grunt.utils._;
+	var _ = require('underscore');
 	var log = grunt.log;
 
 	grunt.registerMultiTask( 'shell', 'Run shell commands', function() {
