@@ -28,6 +28,9 @@
 	"devDependencies": {
 		"grunt": "~0.3.12"
 	},
+	"dependencies": {
+		"underscore": "~1.4.3"
+	},
 	"engines": {
 		"node": ">=0.8.0"
 	},
