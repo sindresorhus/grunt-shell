@@ -68,8 +68,8 @@ shell: {
 Do whatever you want with the stdout.
 
 ```javascript
-function log() {
-	console.log( this );
+function log( input ) {
+	console.log( input );
 }
 
 ...
