@@ -34,10 +34,16 @@ module.exports = function( grunt ) {
 				}
 			}
 
-			if ( err ) {
+			if ( stderr ) {
 				if ( _.isFunction( dataErr ) ) {
 					dataErr( stderr );
-				} else if ( data.failOnError === true ) {
+				} else if ( dataErr === true ) {
+					log.write( stderr );
+				}
+			}
+
+			if ( err ) {
+				if ( data.failOnError === true ) {
 					grunt.fatal( err );
 				} else if ( dataErr === true ) {
 					log.error( err );
