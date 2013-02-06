@@ -19,14 +19,8 @@ module.exports = function( grunt ) {
 				stdout: log
 			}
 		},
-		lint: {
-			files: [
-				'grunt.js',
-				'tasks/**/*.js'
-			]
-		},
 		watch: {
-			files: '<config:lint.files>',
+			files: '<%= jshint.hint.files.src %>',
 			tasks: 'default'
 		},
 		jshint: {
@@ -46,12 +40,19 @@ module.exports = function( grunt ) {
 				trailing: true,
 				smarttabs: true,
 				node: true
+			},
+			hint: {
+				files: {
+					src: ['Gruntfile.js', 'tasks/**/*.js']
+				}
 			}
 		}
 	});
 
 	grunt.loadTasks('tasks');
+	grunt.loadNpmTasks('grunt-contrib-jshint');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
-	grunt.registerTask('default', 'lint shell');
+	grunt.registerTask('default', ['jshint', 'shell']);
 
 };

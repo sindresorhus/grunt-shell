@@ -26,7 +26,9 @@
 		"url": "git://github.com/sindresorhus/grunt-shell.git"
 	},
 	"devDependencies": {
-		"grunt": "~0.3.12"
+		"grunt": "~0.4.0rc5",
+		"grunt-contrib-jshint": "~0.1.1rc5",
+		"grunt-contrib-watch": "~0.2.0rc5"
 	},
 	"engines": {
 		"node": ">=0.8.0"
