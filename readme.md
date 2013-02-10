@@ -1,27 +1,28 @@
 # grunt-shell
 
+*Requires grunt 0.4. Use version 0.1.4 for grunt 0.3 compatibility*
+
 [Grunt][grunt] task to run shell commands.
 
-E.g. compile Compass (`compass compile`) or get the current git branch (`git branch`).
+A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
 
 
-## Getting started
+## Getting Started
 
-Install this grunt plugin next to your project's [grunt.js gruntfile][getting_started] with: `npm install grunt-shell`
+If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
-Then add this line to your project's `grunt.js` gruntfile:
-
-```javascript
-grunt.loadNpmTasks('grunt-shell');
+```shell
+npm install grunt-shell --save-dev
 ```
+
+[grunt]: http://gruntjs.com
+[Getting Started]: https://github.com/gruntjs/grunt/wiki/Getting-started
 
 
 ## Documentation
 
 
 ### Example usage
-
-This grunt task is a [multi task](https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91), which means you can specify multiple subtasks and grunt will iterate over them. The `dist` below is a subtask, you could e.g. create a `dev` subtask to handle stuff while developing. You can also add a special subtask named `_options` that can contain options for all your subtasks.
 
 
 #### Run command
@@ -30,69 +31,35 @@ Create a folder named `test`.
 
 ```javascript
 shell: {
-	make_directory: {
+	makeDir: {
 		command: 'mkdir test'
 	}
 }
 ```
 
-Command expand templates :
+The `command` property supports templates :
 
 ```javascript
-test_dir: 'test',
+testDir: 'test',
 shell: {
-	make_directory: {
-		command: 'mkdir <% test_dir %>'
+	makeDir: {
+		command: 'mkdir <%= testDir %>'
 	}
 }
 ```
 
 
 
-#### Run command and display output
+#### Run command and display the output
 
-Output a directory listing to your Terminal.
-
-```javascript
-shell: {
-	directory_listing: {
-		command: 'ls',
-		stdout: true
-	}
-}
-```
-
-
-#### Run command and handle output
-
-Do whatever you want with the stdout.
-
-```javascript
-function log() {
-	console.log( this );
-}
-
-...
-
-shell: {
-	directory_listing: {
-		command: 'ls',
-		stdout: log
-	}
-}
-```
-
-#### Option passed to the .exec() method
-
-Run a command in another directory. In this example we run it in a subfolder using the `cwd` option.
+Output a directory listing in your Terminal.
 
 ```javascript
 shell: {
-	subfolder_ls: {
+	dirListing: {
 		command: 'ls',
-		stdout: true,
-		execOptions: {
-			cwd: './tasks'
+		options: {
+			stdout: true
 		}
 	}
 }
@@ -101,96 +68,90 @@ shell: {
 
 #### Custom callback
 
-Define custom callback method to handle everything yourself. Check out [shell.js](https://github.com/sindresorhus/grunt-shell/blob/master/tasks/shell.js) to see how it's handled by default.
+Do whatever you want with the output.
 
 ```javascript
-function customHandler() {
-	console.log( this, this.data.stdout );
+function log(err, stdout, stderr, cb) {
+	console.log(stdout);
 }
 
 ...
 
 shell: {
-	ls: {
+	dirListing: {
 		command: 'ls',
-		callback: customHandler
+		options: {
+			callback: log
+		}
 	}
 }
 ```
 
+#### Option passed to the .exec() method
 
-#### Multiple subtasks
-
-This task is a [multi task](https://github.com/cowboy/grunt/blob/master/docs/types_of_tasks.md#multi-tasks-%E2%9A%91), which means you can specify multiple subtasks and grunt will iterate over them.
+Run a command in another directory. In this example we run it in a subfolder using the `cwd` (current working directory) option.
 
 ```javascript
 shell: {
-	directory_listing: {
+	subfolderLs: {
 		command: 'ls',
-		stdout: true
-	},
-	compile_coffescript: {
-		command: 'coffee main.coffee',
-		failOnError: true
-	}
-}
-```
-
-#### Global options
-
-You can define global options in a subtask called `_options`. Your subtasks will then inherit those options with the ability to override them.
-
-
-```javascript
-shell: {
-	directory_listing: {
-		command: 'ls',
-		stdout: true
-	},
-	create_folder: {
-		command: 'mkdir test',
-		failOnError: false
-	},
-	_options: {
-		failOnError: true
+		options: {
+			stdout: true,
+			execOptions: {
+				cwd: 'tasks'
+			}
+		}
 	}
 }
 ```
 
 
-### Options
+### Config
 
 
 #### command
 
 **Required**  
-Accepts: String
+Type: `String`
 
-Your command is my wish.
+The command you want to run. Supports templates.
+
+
+### Options
 
 
 #### stdout
 
 Default: `false`  
-Accepts: Boolean / Function
+Type: `Boolean`
 
-Show stdout in the Terminal. You can supply a function to handle the output.
+Show stdout in the Terminal.
 
 
 #### stderr
 
 Default: `false`  
-Accepts: Boolean / Function
+Type: `Boolean`
 
-Show stderr in the Terminal. You can supply a function to handle the output.
+Show stderr in the Terminal.
 
 
 #### failOnError
 
 Default: `false`  
-Accepts: Boolean
+Type: `Boolean`
 
-Fail task if it encounters an error.
+Fail task if it encounters an error. Does not apply if you specify a `callback`.
+
+
+#### callback(err, stdout, stderr, cb)
+
+Default: `function () {}`  
+Type: `Function`
+
+Lets you override the default callback with your own.
+
+**Make sure to call the `cb` method when you're done.**
 
 
 #### execOptions
@@ -209,12 +170,9 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 - `killSignal` String *(Default: 'SIGTERM')*
 
 
-#### callback
+## Upgrade from 0.1.3 to 0.2.0
 
-Default: `undefined`  
-Accepts: Function
-
-Lets you override the default callback with your own. Everything you need is available on `this`.
+Because of the transition to grunt 0.4 there are some changes. To conform to new grunt standards, all options are now to be specified in an `options` object. I also took the opportunity to improve the task. The `stdout` and `stderr` options now only supports a boolean. If you want to do something with the result use the `callback` option. The `callback` option also changed.
 
 
 ## Tests
@@ -231,7 +189,3 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 MIT License
 (c) [Sindre Sorhus](http://sindresorhus.com)
-
-
-[grunt]: https://github.com/cowboy/grunt
-[getting_started]: https://github.com/cowboy/grunt/blob/master/docs/getting_started.md

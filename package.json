@@ -1,7 +1,7 @@
 {
   "name": "grunt-shell",
   "version": "0.1.4",
-  "description": "Grunt task to run shell commands",
+  "description": "Run shell commands",
   "keywords": [
     "gruntplugin",
     "grunt",
@@ -19,14 +19,13 @@
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
   },
-  "main": "grunt.js",
-  "bin": "bin/grunt-shell",
   "repository": {
     "type": "git",
     "url": "git://github.com/sindresorhus/grunt-shell.git"
   },
+  "dependencies": {},
   "devDependencies": {
-    "grunt": "~0.3.12"
+    "grunt": "~0.4.0"
   },
   "engines": {
     "node": ">=0.8.0"
