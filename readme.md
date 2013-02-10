@@ -170,7 +170,7 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 - `killSignal` String *(Default: 'SIGTERM')*
 
 
-## Upgrade from 0.1.3 to 0.2.0
+## Upgrade from 0.1.4 to 0.2.0
 
 Because of the transition to grunt 0.4 there are some changes. To conform to new grunt standards, all options are now to be specified in an `options` object. I also took the opportunity to improve the task. The `stdout` and `stderr` options now only supports a boolean. If you want to do something with the result use the `callback` option. The `callback` option also changed.
 
