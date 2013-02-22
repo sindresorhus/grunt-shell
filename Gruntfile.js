@@ -1,4 +1,3 @@
-/*jshint camelcase:false */
 'use strict';
 module.exports = function (grunt) {
 	function log(err, stdout, stderr, cb) {

@@ -4,7 +4,6 @@
   "description": "Run shell commands",
   "keywords": [
     "gruntplugin",
-    "grunt",
     "shell",
     "command",
     "cmd",
@@ -23,8 +22,13 @@
     "type": "git",
     "url": "git://github.com/sindresorhus/grunt-shell.git"
   },
-  "dependencies": {},
+  "scripts": {
+    "test": "grunt"
+  },
   "devDependencies": {
+    "grunt": "~0.4.0"
+  },
+  "peerDependencies": {
     "grunt": "~0.4.0"
   },
   "engines": {
