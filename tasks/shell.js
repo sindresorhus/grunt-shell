@@ -16,7 +16,7 @@ module.exports = function (grunt) {
 				options.callback.call(this, err, stdout, stderr, cb);
 			} else {
 				if (err && options.failOnError) {
-					grunt.warn(err);
+					grunt.fail.warn(err);
 				}
 				cb();
 			}
