@@ -15,6 +15,12 @@ If you haven't used [grunt][] before, be sure to check out the [Getting Started]
 npm install grunt-shell --save-dev
 ```
 
+Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+```js
+grunt.loadNpmTasks('grunt-shell');
+```
+
 [grunt]: http://gruntjs.com
 [Getting Started]: https://github.com/gruntjs/grunt/wiki/Getting-started
 
