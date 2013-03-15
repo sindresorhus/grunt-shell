@@ -79,6 +79,7 @@ Do whatever you want with the output.
 ```javascript
 function log(err, stdout, stderr, cb) {
 	console.log(stdout);
+	cb();
 }
 
 ...
