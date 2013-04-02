@@ -11,6 +11,7 @@ module.exports = function (grunt) {
 			failOnError: false
 		});
 		var cmd = grunt.template.process(this.data.command);
+        grunt.verbose.writeln("grunt-shell running command '" + cmd + "'");
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (_.isFunction(options.callback)) {
 				options.callback.call(this, err, stdout, stderr, cb);
