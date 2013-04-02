@@ -22,11 +22,14 @@ module.exports = function (grunt) {
 			}
 		});
 
-		if (options.stdout) {
+		grunt.verbose.writeln('Command:', cmd.yellow);
+		grunt.verbose.writeflags(options, 'Options');
+
+		if (options.stdout || grunt.option('verbose')) {
 			cp.stdout.pipe(process.stdout);
 		}
 
-		if (options.stderr) {
+		if (options.stderr || grunt.option('verbose')) {
 			cp.stderr.pipe(process.stderr);
 		}
 	});
