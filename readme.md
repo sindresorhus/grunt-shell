@@ -55,7 +55,6 @@ shell: {
 ```
 
 
-
 #### Run command and display the output
 
 Output a directory listing in your Terminal.
@@ -94,6 +93,7 @@ shell: {
 }
 ```
 
+
 #### Option passed to the .exec() method
 
 Run a command in another directory. In this example we run it in a subfolder using the `cwd` (current working directory) option.
@@ -108,6 +108,23 @@ shell: {
 				cwd: 'tasks'
 			}
 		}
+	}
+}
+```
+
+
+#### Multiple commands
+
+Run multiple commands by placing them in an array which is joined using `&&` or `;`.
+
+```javascript
+shell: {
+	multiple: {
+		command: [
+			'mkdir test',
+			'cd test',
+			'ls'
+		].join('&&')
 	}
 }
 ```
@@ -194,5 +211,4 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## License
 
-MIT License
-(c) [Sindre Sorhus](http://sindresorhus.com)
+MIT License • © [Sindre Sorhus](http://sindresorhus.com)
