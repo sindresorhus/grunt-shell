@@ -10,7 +10,7 @@ module.exports = function (grunt) {
 			stderr: false,
 			failOnError: false
 		});
-		var cmd = grunt.template.process(this.data.command);
+		var cmd = grunt.template.process(!!process.platform.match(/^win/) ? this.data.command.replace(/\//g, '\\') : this.data.command);
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (_.isFunction(options.callback)) {
 				options.callback.call(this, err, stdout, stderr, cb);
