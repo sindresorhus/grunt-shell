@@ -12,7 +12,7 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
 ```shell
-npm install grunt-shell --save-dev
+npm install --save-dev grunt-shell
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -115,7 +115,7 @@ shell: {
 
 #### Multiple commands
 
-Run multiple commands by placing them in an array which is joined using `&&` or `;`.
+Run multiple commands by placing them in an array which is joined using `&&` or `;`. `&&` means run this only if the previous command succeded. You can also use `&` to have the commands run concurrently (by executing all commands except the last one in a subshell).
 
 ```javascript
 shell: {
@@ -202,11 +202,6 @@ Because of the transition to grunt 0.4 there are some changes. To conform to new
 ## Tests
 
 Grunt currently doesn't have a way to test tasks directly. You can test this task by running `grunt` and manually verify that it works.
-
-
-## Contribute
-
-In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 
 ## License
