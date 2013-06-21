@@ -10,7 +10,14 @@ module.exports = function (grunt) {
 			stderr: false,
 			failOnError: false
 		});
-		var cmd = grunt.template.process(this.data.command);
+
+		var command = this.data.command;
+		if(typeof this.data.command === 'function'){
+			command = this.data.command(this);
+		}
+
+		var cmd = grunt.template.process(command);
+
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (_.isFunction(options.callback)) {
 				options.callback.call(this, err, stdout, stderr, cb);
