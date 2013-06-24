@@ -16,6 +16,15 @@ module.exports = function (grunt) {
 					}
 				}
 			},
+			fnCmd: {
+				command: function () {
+					// `this` is scoped to the grunt instance
+					return 'echo grunt version: ' + this.version;
+				},
+				options: {
+					stdout: true
+				}
+			},
 			callback: {
 				command: 'ls',
 				options: {

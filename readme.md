@@ -43,13 +43,25 @@ shell: {
 }
 ```
 
-The `command` property supports templates :
+The `command` property supports templates:
 
 ```javascript
 testDir: 'test',
 shell: {
 	makeDir: {
 		command: 'mkdir <%= testDir %>'
+	}
+}
+```
+
+You can also supply a function that returns the command:
+
+```javascript
+shell: {
+	makeDir: {
+		command: function () {
+			return 'echo hello';
+		}
 	}
 }
 ```
@@ -136,9 +148,9 @@ shell: {
 #### command
 
 **Required**  
-Type: `String`
+Type: `String|Function`
 
-The command you want to run. Supports templates.
+The command you want to run or a function which returns it. Supports underscore templates.
 
 
 ### Options
