@@ -16,7 +16,7 @@ module.exports = function (grunt) {
 			throw new Error('`command` is required.');
 		}
 
-		cmd = grunt.template.process(_.isFunction(cmd) ? cmd.call(grunt) : cmd);
+		cmd = grunt.template.process(_.isFunction(cmd) ? cmd.apply(grunt,arguments) : cmd);
 
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (_.isFunction(options.callback)) {

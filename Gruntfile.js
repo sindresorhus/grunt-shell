@@ -6,6 +6,7 @@ module.exports = function (grunt) {
 	}
 
 	grunt.initConfig({
+		pkg: grunt.file.readJSON('package.json'),
 		shell: {
 			subfolder: {
 				command: 'ls',
@@ -17,9 +18,13 @@ module.exports = function (grunt) {
 				}
 			},
 			fnCmd: {
-				command: function () {
+				command: function (ver) {
 					// `this` is scoped to the grunt instance
-					return 'echo grunt version: ' + this.version;
+					if(ver){
+						return 'echo grunt-shell version: ' + ver;
+					} else {
+						return 'echo grunt version: ' + this.version
+					}
 				},
 				options: {
 					stdout: true
@@ -43,5 +48,8 @@ module.exports = function (grunt) {
 
 	grunt.loadTasks('tasks');
 
-	grunt.registerTask('default', ['shell']);
+	grunt.registerTask('default', [
+		'shell', 
+		'shell:fnCmd:<%= pkg.version %>'
+	]);
 };

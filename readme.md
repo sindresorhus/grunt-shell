@@ -65,6 +65,17 @@ shell: {
 	}
 }
 ```
+Which can also take arguments:
+
+```javascript
+shell: {
+	makeDir: {
+		command: function (greeting) {
+			return 'echo ' + greeting;
+		}
+	}
+}
+```
 
 
 #### Run command and display the output
