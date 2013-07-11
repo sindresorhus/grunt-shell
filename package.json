@@ -1,6 +1,6 @@
 {
   "name": "grunt-shell",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Run shell commands",
   "keywords": [
     "gruntplugin",
@@ -41,5 +41,7 @@
   "licenses": {
     "type": "MIT"
   },
-  "files": ["tasks/shell.js"]
+  "files": [
+    "tasks/shell.js"
+  ]
 }
