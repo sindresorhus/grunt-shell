@@ -31,6 +31,13 @@ module.exports = function (grunt) {
 					callback: log
 				}
 			},
+			withColor: {
+				command: 'ls --color=yes',
+				options: {
+					stdout: true,
+					stderr: true
+				}
+			},
 			error: {
 				command: 'ls && exit 1',
 				options: {

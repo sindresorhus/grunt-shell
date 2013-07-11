@@ -36,5 +36,8 @@
   },
   "licenses": {
     "type": "MIT"
+  },
+  "dependencies": {
+    "stripcolorcodes": "~0.1.0"
   }
 }
