@@ -9,6 +9,7 @@
     "cmd",
     "exec",
     "spawn",
+    "process",
     "cli"
   ],
   "homepage": "https://github.com/sindresorhus/grunt-shell",
@@ -25,6 +26,9 @@
   "scripts": {
     "test": "grunt"
   },
+  "dependencies": {
+    "stripcolorcodes": "~0.1.0"
+  },
   "devDependencies": {
     "grunt": "~0.4.0"
   },
@@ -37,7 +41,5 @@
   "licenses": {
     "type": "MIT"
   },
-  "dependencies": {
-    "stripcolorcodes": "~0.1.0"
-  }
+  "files": ["tasks/shell.js"]
 }
