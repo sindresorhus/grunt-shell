@@ -7,9 +7,9 @@ module.exports = function (grunt) {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
 		var cb = this.async();
 		var options = this.options({
-			stdout: false,
-			stderr: false,
-			failOnError: false
+			stdout: true,
+			stderr: true,
+			failOnError: true
 		});
 		var cmd = this.data.command;
 
