@@ -28,6 +28,25 @@ grunt.loadNpmTasks('grunt-shell');
 ## Documentation
 
 
+### Example config
+
+```js
+grunt.initConfig({
+	shell: {								// Task
+		listFolders: {						// Target
+			options: {						// Options
+				stdout: true
+			},
+			command: 'ls'
+		}
+	}
+});
+
+grunt.loadNpmTasks('grunt-shell');
+grunt.registerTask('default', ['shell']);
+```
+
+
 ### Example usage
 
 
@@ -35,35 +54,41 @@ grunt.loadNpmTasks('grunt-shell');
 
 Create a folder named `test`.
 
-```javascript
-shell: {
-	makeDir: {
-		command: 'mkdir test'
+```js
+grunt.initConfig({
+	shell: {
+		makeDir: {
+			command: 'mkdir test'
+		}
 	}
-}
+});
 ```
 
 The `command` property supports templates:
 
-```javascript
-testDir: 'test',
-shell: {
-	makeDir: {
-		command: 'mkdir <%= testDir %>'
+```js
+grunt.initConfig({
+	testDir: 'test',
+	shell: {
+		makeDir: {
+			command: 'mkdir <%= testDir %>'
+		}
 	}
-}
+});
 ```
 
 You can also supply a function that returns the command:
 
-```javascript
-shell: {
-	makeDir: {
-		command: function () {
-			return 'echo hello';
+```js
+grunt.initConfig({
+	shell: {
+		makeDir: {
+			command: function () {
+				return 'echo hello';
+			}
 		}
 	}
-}
+});
 ```
 Which can also take arguments:
 
@@ -82,15 +107,17 @@ shell: {
 
 Output a directory listing in your Terminal.
 
-```javascript
-shell: {
-	dirListing: {
-		command: 'ls',
-		options: {
-			stdout: true
+```js
+grunt.initConfig({
+	shell: {
+		dirListing: {
+			command: 'ls',
+			options: {
+				stdout: true
+			}
 		}
 	}
-}
+});
 ```
 
 
@@ -98,22 +125,22 @@ shell: {
 
 Do whatever you want with the output.
 
-```javascript
+```js
 function log(err, stdout, stderr, cb) {
 	console.log(stdout);
 	cb();
 }
 
-...
-
-shell: {
-	dirListing: {
-		command: 'ls',
-		options: {
-			callback: log
+grunt.initConfig({
+	shell: {
+		dirListing: {
+			command: 'ls',
+			options: {
+				callback: log
+			}
 		}
 	}
-}
+});
 ```
 
 
@@ -121,18 +148,20 @@ shell: {
 
 Run a command in another directory. In this example we run it in a subfolder using the `cwd` (current working directory) option.
 
-```javascript
-shell: {
-	subfolderLs: {
-		command: 'ls',
-		options: {
-			stdout: true,
-			execOptions: {
-				cwd: 'tasks'
+```js
+grunt.initConfig({
+	shell: {
+		subfolderLs: {
+			command: 'ls',
+			options: {
+				stdout: true,
+				execOptions: {
+					cwd: 'tasks'
+				}
 			}
 		}
 	}
-}
+});
 ```
 
 
@@ -140,16 +169,18 @@ shell: {
 
 Run multiple commands by placing them in an array which is joined using `&&` or `;`. `&&` means run this only if the previous command succeded. You can also use `&` to have the commands run concurrently (by executing all commands except the last one in a subshell).
 
-```javascript
-shell: {
-	multiple: {
-		command: [
-			'mkdir test',
-			'cd test',
-			'ls'
-		].join('&&')
+```js
+grunt.initConfig({
+	shell: {
+		multiple: {
+			command: [
+				'mkdir test',
+				'cd test',
+				'ls'
+			].join('&&')
+		}
 	}
-}
+});
 ```
 
 

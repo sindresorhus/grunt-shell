@@ -1,6 +1,7 @@
 'use strict';
 module.exports = function (grunt) {
 	var exec = require('child_process').exec;
+	var stripColors = require('stripcolorcodes');
 	var _ = grunt.util._;
 
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
@@ -29,15 +30,25 @@ module.exports = function (grunt) {
 			}
 		});
 
+		var captureOutput = function (child, output) {
+			if (grunt.option('color') === false) {
+				child.on('data', function (data) {
+					output.write(stripColors(data));
+				});
+			} else {
+				child.pipe(output);
+			}
+		};
+
 		grunt.verbose.writeln('Command:', cmd.yellow);
 		grunt.verbose.writeflags(options, 'Options');
 
 		if (options.stdout || grunt.option('verbose')) {
-			cp.stdout.pipe(process.stdout);
+			captureOutput(cp.stdout, process.stdout);
 		}
 
 		if (options.stderr || grunt.option('verbose')) {
-			cp.stderr.pipe(process.stderr);
+			captureOutput(cp.stderr, process.stderr);
 		}
 	});
 };
