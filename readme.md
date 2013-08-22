@@ -92,7 +92,7 @@ grunt.initConfig({
 ```
 Which can also take arguments:
 
-```javascript
+```js
 shell: {
 	makeDir: {
 		command: function (greeting) {
@@ -100,6 +100,9 @@ shell: {
 		}
 	}
 }
+
+grunt.loadNpmTasks('grunt-shell');
+grunt.registerTask('default', ['shell:hello']);
 ```
 
 

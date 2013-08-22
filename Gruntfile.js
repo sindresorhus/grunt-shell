@@ -18,10 +18,10 @@ module.exports = function (grunt) {
 				}
 			},
 			fnCmd: {
-				command: function (ver) {
+				command: function (version) {
 					// `this` is scoped to the grunt instance
-					if(ver){
-						return 'echo grunt-shell version: ' + ver;
+					if (version) {
+						return 'echo grunt-shell version: ' + version;
 					} else {
 						return 'echo grunt version: ' + this.version
 					}
