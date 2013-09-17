@@ -90,6 +90,20 @@ grunt.initConfig({
 	}
 });
 ```
+Which can also take arguments:
+
+```js
+shell: {
+	makeDir: {
+		command: function (greeting) {
+			return 'echo ' + greeting;
+		}
+	}
+}
+
+grunt.loadNpmTasks('grunt-shell');
+grunt.registerTask('default', ['shell:hello']);
+```
 
 
 #### Run command and display the output
