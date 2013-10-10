@@ -12,7 +12,6 @@ module.exports = function (grunt) {
 			failOnError: false
 		});
 		var cmd = this.data.command;
-		var self = this;
 
 		if (cmd === undefined) {
 			throw new Error('`command` is required.');
@@ -29,7 +28,7 @@ module.exports = function (grunt) {
 				}
 				cb();
 			}
-		});
+		}.bind(this));
 
 		var captureOutput = function (child, output) {
 			if (grunt.option('color') === false) {
