@@ -12,6 +12,7 @@ module.exports = function (grunt) {
 			failOnError: false
 		});
 		var cmd = this.data.command;
+		var self = this;
 
 		if (cmd === undefined) {
 			throw new Error('`command` is required.');
@@ -21,7 +22,7 @@ module.exports = function (grunt) {
 
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (_.isFunction(options.callback)) {
-				options.callback.call(this, err, stdout, stderr, cb);
+				options.callback.call(self, err, stdout, stderr, cb);
 			} else {
 				if (err && options.failOnError) {
 					grunt.warn(err);
