@@ -21,7 +21,7 @@ module.exports = function (grunt) {
 
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (_.isFunction(options.callback)) {
-				options.callback.call(self, err, stdout, stderr, cb);
+				options.callback.call(this, err, stdout, stderr, cb);
 			} else {
 				if (err && options.failOnError) {
 					grunt.warn(err);
