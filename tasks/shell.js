@@ -50,5 +50,9 @@ module.exports = function (grunt) {
 		if (options.stderr || grunt.option('verbose')) {
 			captureOutput(cp.stderr, process.stderr);
 		}
+
+		if (options.stdin) {
+			process.stdin.pipe(cp.stdin);
+		}
 	});
 };
