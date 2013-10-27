@@ -202,7 +202,7 @@ The command you want to run or a function which returns it. Supports underscore 
 
 #### stdin
 
-Default: `false`
+Default: `true`
 Type: `Boolean`
 
 Forward the terminal's stdin to the command.

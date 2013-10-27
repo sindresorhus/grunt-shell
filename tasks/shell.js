@@ -9,6 +9,7 @@ module.exports = function (grunt) {
 		var options = this.options({
 			stdout: false,
 			stderr: false,
+			stdin: true,
 			failOnError: false
 		});
 		var cmd = this.data.command;
