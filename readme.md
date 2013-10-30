@@ -82,7 +82,7 @@ You can also supply a function that returns the command:
 ```js
 grunt.initConfig({
 	shell: {
-		makeDir: {
+		hello: {
 			command: function () {
 				return 'echo hello';
 			}
@@ -94,7 +94,7 @@ Which can also take arguments:
 
 ```js
 shell: {
-	makeDir: {
+	hello: {
 		command: function (greeting) {
 			return 'echo ' + greeting;
 		}
