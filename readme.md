@@ -1,8 +1,6 @@
 # grunt-shell
 
-*Requires grunt 0.4. Use version 0.1.4 for grunt 0.3 compatibility*
-
-[Grunt][grunt] task to run shell commands.
+> [Grunt][grunt] task to run shell commands.
 
 A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
 
@@ -18,8 +16,10 @@ npm install --save-dev grunt-shell
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
 
 ```js
-grunt.loadNpmTasks('grunt-shell');
+grunt.loadNpmTasks('grunt-eslint');
 ```
+
+*Tip: the [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks) module makes it easier to load multiple grunt tasks.*
 
 [grunt]: http://gruntjs.com
 [Getting Started]: https://github.com/gruntjs/grunt/wiki/Getting-started
