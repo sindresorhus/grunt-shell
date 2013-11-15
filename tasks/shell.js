@@ -9,6 +9,7 @@ module.exports = function (grunt) {
 		var options = this.options({
 			stdout: false,
 			stderr: false,
+			stdin: true,
 			failOnError: false
 		});
 		var cmd = this.data.command;
@@ -49,6 +50,10 @@ module.exports = function (grunt) {
 
 		if (options.stderr || grunt.option('verbose')) {
 			captureOutput(cp.stderr, process.stderr);
+		}
+
+		if (options.stdin) {
+			process.stdin.pipe(cp.stdin);
 		}
 	});
 };
