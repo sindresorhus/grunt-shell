@@ -217,6 +217,14 @@ Type: `Boolean`
 Show stderr in the Terminal.
 
 
+#### stdin
+
+Default: `true`  
+Type: `Boolean`
+
+Forward the terminal's stdin to the command.
+
+
 #### failOnError
 
 Default: `false`  
