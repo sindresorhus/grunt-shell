@@ -56,7 +56,7 @@ module.exports = function (grunt) {
 	grunt.loadTasks('tasks');
 
 	grunt.registerTask('default', [
-		'shell', 
+		'shell',
 		'shell:fnCmd:<%= pkg.version %>'
 	]);
 };

@@ -1,6 +1,6 @@
 # grunt-shell
 
-> [Grunt][grunt] task to run shell commands.
+> Run shell commands
 
 A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
 
@@ -170,7 +170,7 @@ grunt.initConfig({
 
 #### Multiple commands
 
-Run multiple commands by placing them in an array which is joined using `&&` or `;`. `&&` means run this only if the previous command succeded. You can also use `&` to have the commands run concurrently (by executing all commands except the last one in a subshell).
+Run multiple commands by placing them in an array which is joined using `&&` or `;`. `&&` means run this only if the previous command succeeded. You can also use `&` to have the commands run concurrently (by executing all commands except the last one in a subshell).
 
 ```js
 grunt.initConfig({
@@ -251,16 +251,6 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 - `killSignal` String *(Default: 'SIGTERM')*
 
 
-## Upgrade from 0.1.4 to 0.2.0
-
-Because of the transition to grunt 0.4 there are some changes. To conform to new grunt standards, all options are now to be specified in an `options` object. I also took the opportunity to improve the task. The `stdout` and `stderr` options now only supports a boolean. If you want to do something with the result use the `callback` option. The `callback` option also changed.
-
-
-## Tests
-
-Grunt currently doesn't have a way to test tasks directly. You can test this task by running `grunt` and manually verify that it works.
-
-
 ## License
 
-MIT License • © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)

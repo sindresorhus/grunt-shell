@@ -12,17 +12,16 @@
     "process",
     "cli"
   ],
-  "homepage": "https://github.com/sindresorhus/grunt-shell",
-  "bugs": "https://github.com/sindresorhus/grunt-shell/issues",
+  "license": "MIT",
   "author": {
     "name": "Sindre Sorhus",
     "email": "sindresorhus@gmail.com",
     "url": "http://sindresorhus.com"
   },
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/sindresorhus/grunt-shell.git"
-  },
+  "files": [
+    "tasks/shell.js"
+  ],
+  "repository": "sindresorhus/grunt-shell.git",
   "scripts": {
     "test": "grunt"
   },
@@ -37,11 +36,5 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  },
-  "licenses": {
-    "type": "MIT"
-  },
-  "files": [
-    "tasks/shell.js"
-  ]
+  }
 }
