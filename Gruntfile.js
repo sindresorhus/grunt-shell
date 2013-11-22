@@ -46,8 +46,7 @@ module.exports = function (grunt) {
 			error: {
 				command: 'ls && exit 1',
 				options: {
-					stderr: true,
-					failOnError: true
+					stderr: true
 				}
 			}
 		}
