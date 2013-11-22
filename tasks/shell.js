@@ -1,9 +1,8 @@
 'use strict';
-module.exports = function (grunt) {
-	var exec = require('child_process').exec;
-	var chalk = require('chalk');
-	var _ = grunt.util._;
+var exec = require('child_process').exec;
+var chalk = require('chalk');
 
+module.exports = function (grunt) {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
 		var cb = this.async();
 		var options = this.options({
@@ -18,10 +17,10 @@ module.exports = function (grunt) {
 			throw new Error('`command` is required.');
 		}
 
-		cmd = grunt.template.process(_.isFunction(cmd) ? cmd.apply(grunt, arguments) : cmd);
+		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
 
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
-			if (_.isFunction(options.callback)) {
+			if (typeof options.callback === 'function') {
 				options.callback.call(this, err, stdout, stderr, cb);
 			} else {
 				if (err && options.failOnError) {
