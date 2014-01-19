@@ -28,7 +28,7 @@ module.exports = function (grunt) {
 				}
 				cb();
 			}
-		}.bind(this));
+		}.bind(this)).on('exit', function(code){ cb(); });
 
 		var captureOutput = function (child, output) {
 			if (grunt.option('color') === false) {
