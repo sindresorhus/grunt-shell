@@ -30,8 +30,6 @@ module.exports = function (grunt) {
 			}
 		}.bind(this));
 
-		cp.on('exit', function (code) { cb(code === 0) });
-
 		var captureOutput = function (child, output) {
 			if (grunt.option('color') === false) {
 				child.on('data', function (data) {
