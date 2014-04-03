@@ -1,4 +1,4 @@
-# grunt-shell [![Build Status](https://secure.travis-ci.org/sindresorhus/grunt-shell.png?branch=master)](http://travis-ci.org/sindresorhus/grunt-shell) [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+# grunt-shell [![Build Status](https://travis-ci.org/sindresorhus/grunt-shell.svg?branch=master)](https://travis-ci.org/sindresorhus/grunt-shell)
 
 > Run shell commands
 
@@ -9,8 +9,8 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
-```shell
-npm install --save-dev grunt-shell
+```bash
+$ npm install --save-dev grunt-shell
 ```
 
 Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
@@ -261,4 +261,4 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
