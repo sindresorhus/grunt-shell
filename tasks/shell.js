@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 		var cmd = this.data.command;
 
 		if (cmd === undefined) {
-			throw new Error('`command` is required.');
+			throw new Error('`command` required');
 		}
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
@@ -41,7 +41,6 @@ module.exports = function (grunt) {
 		};
 
 		grunt.verbose.writeln('Command:', chalk.yellow(cmd));
-		grunt.verbose.writeflags(options, 'Options');
 
 		if (options.stdout || grunt.option('verbose')) {
 			captureOutput(cp.stdout, process.stdout);

@@ -114,10 +114,7 @@ Output a directory listing in your Terminal.
 grunt.initConfig({
 	shell: {
 		dirListing: {
-			command: 'ls',
-			options: {
-				stderr: false
-			}
+			command: 'ls'
 		}
 	}
 });
@@ -261,4 +258,4 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 
 ## License
 
-[MIT](http://opensource.org/licenses/MIT) © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](http://sindresorhus.com)
