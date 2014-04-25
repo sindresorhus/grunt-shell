@@ -190,7 +190,7 @@ grunt.initConfig({
 #### command
 
 **Required**  
-Type: `String|Function`
+Type: `string`, `function`
 
 The command you want to run or a function which returns it. Supports underscore templates.
 
@@ -200,40 +200,40 @@ The command you want to run or a function which returns it. Supports underscore 
 
 #### stdout
 
+Type: `boolean`  
 Default: `true`
-Type: `Boolean`
 
 Show stdout in the Terminal.
 
 
 #### stderr
 
+Type: `boolean`  
 Default: `true`
-Type: `Boolean`
 
 Show stderr in the Terminal.
 
 
 #### stdin
 
-Default: `true`  
-Type: `Boolean`
+Type: `boolean`  
+Default: `true`
 
 Forward the terminal's stdin to the command.
 
 
 #### failOnError
 
+Type: `boolean`  
 Default: `true`
-Type: `Boolean`
 
 Fail task if it encounters an error. Does not apply if you specify a `callback`.
 
 
 #### callback(err, stdout, stderr, cb)
 
-Default: `function () {}`  
-Type: `Function`
+Type: `function`  
+Default: `function () {}`
 
 Lets you override the default callback with your own.
 
@@ -242,8 +242,7 @@ Lets you override the default callback with your own.
 
 #### execOptions
 
-Default: `undefined`  
-Accepts: Object
+Type: `object`
 
 Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method:
 
