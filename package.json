@@ -19,14 +19,14 @@
     "url": "http://sindresorhus.com"
   },
   "files": [
-    "tasks/shell.js"
+    "tasks"
   ],
-  "repository": "sindresorhus/grunt-shell.git",
+  "repository": "sindresorhus/grunt-shell",
   "scripts": {
     "test": "grunt"
   },
   "dependencies": {
-    "chalk": "~0.3.0"
+    "chalk": "~0.4.0"
   },
   "devDependencies": {
     "grunt": "~0.4.0"

@@ -11,7 +11,6 @@ module.exports = function (grunt) {
 			subfolder: {
 				command: 'ls',
 				options: {
-					stdout: true,
 					execOptions: {
 						cwd: 'tasks'
 					}
@@ -25,9 +24,6 @@ module.exports = function (grunt) {
 					} else {
 						return 'echo grunt version: ' + this.version
 					}
-				},
-				options: {
-					stdout: true
 				}
 			},
 			callback: {
@@ -37,17 +33,10 @@ module.exports = function (grunt) {
 				}
 			},
 			withColor: {
-				command: 'ls --color=yes',
-				options: {
-					stdout: true,
-					stderr: true
-				}
+				command: 'ls --color=yes'
 			},
 			error: {
-				command: 'ls && exit 1',
-				options: {
-					stderr: true
-				}
+				command: 'ls && exit 1'
 			}
 		}
 	});

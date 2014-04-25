@@ -35,7 +35,7 @@ grunt.initConfig({
 	shell: {								// Task
 		listFolders: {						// Target
 			options: {						// Options
-				stdout: true
+				stderr: false
 			},
 			command: 'ls'
 		}
@@ -116,7 +116,7 @@ grunt.initConfig({
 		dirListing: {
 			command: 'ls',
 			options: {
-				stdout: true
+				stderr: false
 			}
 		}
 	}
@@ -157,7 +157,7 @@ grunt.initConfig({
 		subfolderLs: {
 			command: 'ls',
 			options: {
-				stdout: true,
+				stderr: false,
 				execOptions: {
 					cwd: 'tasks'
 				}
@@ -203,7 +203,7 @@ The command you want to run or a function which returns it. Supports underscore 
 
 #### stdout
 
-Default: `false`  
+Default: `true`
 Type: `Boolean`
 
 Show stdout in the Terminal.
@@ -211,7 +211,7 @@ Show stdout in the Terminal.
 
 #### stderr
 
-Default: `false`  
+Default: `true`
 Type: `Boolean`
 
 Show stderr in the Terminal.
@@ -227,7 +227,7 @@ Forward the terminal's stdin to the command.
 
 #### failOnError
 
-Default: `false`  
+Default: `true`
 Type: `Boolean`
 
 Fail task if it encounters an error. Does not apply if you specify a `callback`.
