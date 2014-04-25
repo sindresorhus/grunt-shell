@@ -1,6 +1,6 @@
 {
   "name": "grunt-shell",
-  "version": "0.6.4",
+  "version": "0.7.0",
   "description": "Run shell commands",
   "keywords": [
     "gruntplugin",
