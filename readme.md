@@ -93,16 +93,19 @@ grunt.initConfig({
 Which can also take arguments:
 
 ```js
-shell: {
-	hello: {
-		command: function (greeting) {
-			return 'echo ' + greeting;
+module.exports = function(grunt) {
+	grunt.loadNpmTasks('grunt-shell');
+	grunt.initConfig({
+		shell: {
+			greet: {
+				command: function (greeting) {
+					return 'echo ' + greeting;
+				}
+			}
 		}
-	}
+	});
+	grunt.registerTask('default', ['shell:greet:hello']);
 }
-
-grunt.loadNpmTasks('grunt-shell');
-grunt.registerTask('default', ['shell:hello']);
 ```
 
 
