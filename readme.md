@@ -4,6 +4,8 @@
 
 A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
 
+**Use [StackOverflow](http://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
+
 
 ## Getting Started
 
