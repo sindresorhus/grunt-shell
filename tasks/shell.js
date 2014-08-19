@@ -53,7 +53,9 @@ module.exports = function (grunt) {
 		if (options.stdin) {
 			process.stdin.resume();
 			process.stdin.setEncoding('utf8');
-			process.stdin.setRawMode(true);
+			if (typeof process.stdin.setRawMode === 'function') {
+				process.stdin.setRawMode(true);
+			}
 			process.stdin.pipe(cp.stdin);
 		}
 	});
