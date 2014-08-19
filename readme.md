@@ -11,7 +11,7 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 
 If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
 
-```bash
+```sh
 $ npm install --save-dev grunt-shell
 ```
 

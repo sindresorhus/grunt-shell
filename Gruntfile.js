@@ -33,7 +33,7 @@ module.exports = function (grunt) {
 				}
 			},
 			withColor: {
-				command: 'ls --color=yes'
+				command: 'ls -G'
 			},
 			error: {
 				command: 'ls && exit 1',
