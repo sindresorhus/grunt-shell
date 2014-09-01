@@ -10,7 +10,7 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 ## Install
 
 ```sh
-$ npm install --save-dev grunt-sass
+$ npm install --save-dev grunt-shell
 ```
 
 
