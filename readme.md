@@ -7,52 +7,36 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 **Use [StackOverflow](http://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
 
 
-## Getting Started
-
-If you haven't used [grunt][] before, be sure to check out the [Getting Started][] guide, as it explains how to create a [gruntfile][Getting Started] as well as install and use grunt plugins. Once you're familiar with that process, install this plugin with this command:
+## Install
 
 ```sh
-$ npm install --save-dev grunt-shell
+$ npm install --save-dev grunt-sass
 ```
 
-Once the plugin has been installed, it may be enabled inside your Gruntfile with this line of JavaScript:
+
+## Usage
 
 ```js
-grunt.loadNpmTasks('grunt-shell');
-```
+require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
 
-*Tip: the [load-grunt-tasks](https://github.com/sindresorhus/load-grunt-tasks) module makes it easier to load multiple grunt tasks.*
-
-[grunt]: http://gruntjs.com
-[Getting Started]: https://github.com/gruntjs/grunt/wiki/Getting-started
-
-
-## Documentation
-
-
-### Example config
-
-```js
 grunt.initConfig({
-	shell: {								// Task
-		listFolders: {						// Target
-			options: {						// Options
-				stderr: false
-			},
+	shell: {
+		options: {
+			stderr: false
+		},
+		target: {
 			command: 'ls'
 		}
 	}
 });
 
-grunt.loadNpmTasks('grunt-shell');
 grunt.registerTask('default', ['shell']);
 ```
 
 
-### Example usage
+## Examples
 
-
-#### Run command
+### Run command
 
 Create a folder named `test`.
 
@@ -92,6 +76,7 @@ grunt.initConfig({
 	}
 });
 ```
+
 Which can also take arguments:
 
 ```js
@@ -110,8 +95,7 @@ module.exports = function(grunt) {
 }
 ```
 
-
-#### Run command and display the output
+### Run command and display the output
 
 Output a directory listing in your Terminal.
 
@@ -125,8 +109,7 @@ grunt.initConfig({
 });
 ```
 
-
-#### Custom callback
+### Custom callback
 
 Do whatever you want with the output.
 
@@ -148,8 +131,7 @@ grunt.initConfig({
 });
 ```
 
-
-#### Option passed to the .exec() method
+### Option passed to the .exec() method
 
 Run a command in another directory. In this example we run it in a subfolder using the `cwd` (current working directory) option.
 
@@ -169,8 +151,7 @@ grunt.initConfig({
 });
 ```
 
-
-#### Multiple commands
+### Multiple commands
 
 Run multiple commands by placing them in an array which is joined using `&&` or `;`. `&&` means run this only if the previous command succeeded. You can also use `&` to have the commands run concurrently (by executing all commands except the last one in a subshell).
 
@@ -189,53 +170,46 @@ grunt.initConfig({
 ```
 
 
-### Config
+## Config
 
+### command
 
-#### command
-
-**Required**  
+*Required*  
 Type: `string`, `function`
 
 The command you want to run or a function which returns it. Supports underscore templates.
 
+## Options
 
-### Options
-
-
-#### stdout
+### stdout
 
 Type: `boolean`  
 Default: `true`
 
 Show stdout in the Terminal.
 
-
-#### stderr
+### stderr
 
 Type: `boolean`  
 Default: `true`
 
 Show stderr in the Terminal.
 
-
-#### stdin
+### stdin
 
 Type: `boolean`  
 Default: `true`
 
 Forward the terminal's stdin to the command.
 
-
-#### failOnError
+### failOnError
 
 Type: `boolean`  
 Default: `true`
 
 Fail task if it encounters an error. Does not apply if you specify a `callback`.
 
-
-#### callback(err, stdout, stderr, cb)
+### callback(err, stdout, stderr, cb)
 
 Type: `function`  
 Default: `function () {}`
@@ -244,8 +218,7 @@ Lets you override the default callback with your own.
 
 **Make sure to call the `cb` method when you're done.**
 
-
-#### execOptions
+### execOptions
 
 Type: `object`
 
