@@ -9,7 +9,8 @@ module.exports = function (grunt) {
 			stdout: true,
 			stderr: true,
 			stdin: true,
-			failOnError: true
+			failOnError: true,
+			stdinRawMode: false
 		});
 		var cmd = this.data.command;
 
@@ -53,9 +54,11 @@ module.exports = function (grunt) {
 		if (options.stdin) {
 			process.stdin.resume();
 			process.stdin.setEncoding('utf8');
-			if (typeof process.stdin.setRawMode === 'function') {
+
+			if (options.stdinRawMode && process.stdin.isTTY) {
 				process.stdin.setRawMode(true);
 			}
+
 			process.stdin.pipe(cp.stdin);
 		}
 	});

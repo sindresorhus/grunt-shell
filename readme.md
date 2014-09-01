@@ -209,6 +209,13 @@ Default: `true`
 
 Fail task if it encounters an error. Does not apply if you specify a `callback`.
 
+### stdinRawMode
+
+Type: `boolean`  
+Default: `false`
+
+This sets `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs_setrawmode_mode).
+
 ### callback(err, stdout, stderr, cb)
 
 Type: `function`  
