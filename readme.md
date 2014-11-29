@@ -24,8 +24,11 @@ grunt.initConfig({
 		options: {
 			stderr: false
 		},
-		target: {
+		foo: {
 			command: 'ls'
+		},
+		bar: {
+			command: 'ls -al'
 		}
 	}
 });
@@ -33,6 +36,11 @@ grunt.initConfig({
 grunt.registerTask('default', ['shell']);
 ```
 
+Now you can run all shell command entires (`foo` and `bar` here) with `grunt shell` (or `grunt default`, or just `grunt`). To pick a specific target:
+
+```sh
+grunt shell:foo
+```
 
 ## Examples
 
