@@ -17,7 +17,7 @@ $ npm install --save-dev grunt-shell
 ## Usage
 
 ```js
-require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
+grunt.loadNpmTasks('grunt-shell'); // npm install --save-dev load-grunt-tasks
 
 grunt.initConfig({
 	shell: {
