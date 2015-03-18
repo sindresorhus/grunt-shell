@@ -22,7 +22,7 @@ module.exports = function (grunt) {
 					if (version) {
 						return 'echo grunt-shell version: ' + version;
 					} else {
-						return 'echo grunt version: ' + this.version
+						return 'echo grunt version: ' + this.version;
 					}
 				}
 			},

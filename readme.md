@@ -218,8 +218,7 @@ This sets `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs
 
 ### callback(err, stdout, stderr, cb)
 
-Type: `function`  
-Default: `function () {}`
+Type: `function`
 
 Lets you override the default callback with your own.
 
