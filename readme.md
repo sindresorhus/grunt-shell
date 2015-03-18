@@ -238,6 +238,13 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 - `maxBuffer` Number *(Default: 200\*1024)*
 - `killSignal` String *(Default: 'SIGTERM')*
 
+### blocking
+
+Type: `boolean`  
+Default: `false`
+
+This makes grunt pauses until the child process has finished.
+
 
 ## License
 

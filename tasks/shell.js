@@ -10,7 +10,8 @@ module.exports = function (grunt) {
 			stderr: true,
 			stdin: true,
 			failOnError: true,
-			stdinRawMode: false
+			stdinRawMode: false,
+			blocking: false
 		});
 		var cmd = this.data.command;
 
@@ -27,7 +28,9 @@ module.exports = function (grunt) {
 				if (err && options.failOnError) {
 					grunt.warn(err);
 				}
-				cb();
+				if (!options.blocking) {
+					cb();
+				}
 			}
 		}.bind(this));
 
@@ -60,6 +63,14 @@ module.exports = function (grunt) {
 			}
 
 			process.stdin.pipe(cp.stdin);
+		}
+
+		if (options.blocking) {
+			cp.on('exit', function () {
+				cb();
+			}).on('error', function () {
+				cb();
+			});
 		}
 	});
 };
