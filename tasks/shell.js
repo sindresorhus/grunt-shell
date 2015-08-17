@@ -20,6 +20,10 @@ module.exports = function (grunt) {
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
 
+		if (options.logCommand) {
+			grunt.log.writeln('> ' + (grunt.option('color') === false ? cmd : chalk.bold(cmd)));
+		}
+
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (typeof options.callback === 'function') {
 				options.callback.call(this, err, stdout, stderr, cb);
