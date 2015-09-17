@@ -1,3 +1,4 @@
+// Portions copyright 2015 Adobe Systems Incorporated. All Rights Reserved.
 'use strict';
 var exec = require('child_process').exec;
 var chalk = require('chalk');
