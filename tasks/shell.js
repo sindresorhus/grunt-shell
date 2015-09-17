@@ -1,3 +1,4 @@
+// Portions copyright 2015 Adobe Systems Incorporated. All Rights Reserved.
 'use strict';
 var exec = require('child_process').exec;
 var chalk = require('chalk');
@@ -19,6 +20,10 @@ module.exports = function (grunt) {
 		}
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
+
+		if (options.logCommand) {
+			grunt.log.writeln('> ' + (grunt.option('color') === false ? cmd : chalk.bold(cmd)));
+		}
 
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (typeof options.callback === 'function') {

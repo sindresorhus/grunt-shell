@@ -40,6 +40,12 @@ module.exports = function (grunt) {
 				options: {
 					failOnError: false
 				}
+			},
+			logCommand: {
+				command: 'echo the command',
+				options: {
+					logCommand: true
+				}
 			}
 		}
 	});
