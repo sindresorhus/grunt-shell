@@ -12,7 +12,11 @@ module.exports = function (grunt) {
 			failOnError: true,
 			stdinRawMode: false
 		});
-		var cmd = this.data.command;
+		var cmd;
+		if (typeof this.data === 'string')
+			cmd = this.data;
+		else
+			cmd = this.data.command;
 
 		if (cmd === undefined) {
 			throw new Error('`command` required');
