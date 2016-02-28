@@ -9,7 +9,7 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 
 ## Install
 
-```sh
+```
 $ npm install --save-dev grunt-shell
 ```
 
@@ -27,8 +27,7 @@ grunt.initConfig({
 		target: {
 			command: 'ls'
 		},
-		// or directly with a string when no extra options are required
-		another: 'ls ./src'
+		another: 'ls ./src' // shorthand
 	}
 });
 
@@ -176,7 +175,7 @@ grunt.initConfig({
 
 ### command
 
-*Required*  
+*Required*<br>
 Type: `string`, `function`
 
 The command you want to run or a function which returns it. Supports underscore templates.
@@ -187,35 +186,35 @@ The command you want to run or a function which returns it. Supports underscore 
 
 ### stdout
 
-Type: `boolean`  
+Type: `boolean`<br>
 Default: `true`
 
 Show stdout in the Terminal.
 
 ### stderr
 
-Type: `boolean`  
+Type: `boolean`<br>
 Default: `true`
 
 Show stderr in the Terminal.
 
 ### stdin
 
-Type: `boolean`  
+Type: `boolean`<br>
 Default: `true`
 
 Forward the terminal's stdin to the command.
 
 ### failOnError
 
-Type: `boolean`  
+Type: `boolean`<br>
 Default: `true`
 
 Fail task if it encounters an error. Does not apply if you specify a `callback`.
 
 ### stdinRawMode
 
-Type: `boolean`  
+Type: `boolean`<br>
 Default: `false`
 
 This sets `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs_setrawmode_mode).
@@ -245,4 +244,4 @@ Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_p
 
 ## License
 
-MIT © [Sindre Sorhus](http://sindresorhus.com)
+MIT © [Sindre Sorhus](https://sindresorhus.com)
