@@ -26,7 +26,9 @@ grunt.initConfig({
 		},
 		target: {
 			command: 'ls'
-		}
+		},
+		// or directly with a string when no extra options are required
+		another: 'ls ./src'
 	}
 });
 
@@ -178,6 +180,8 @@ grunt.initConfig({
 Type: `string`, `function`
 
 The command you want to run or a function which returns it. Supports underscore templates.
+
+*command can be omitted by directly setting the target with the command.*
 
 ## Options
 
