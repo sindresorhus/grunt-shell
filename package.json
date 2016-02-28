@@ -16,7 +16,7 @@
     "test": "xo && grunt"
   },
   "files": [
-    "index.js"
+    "tasks"
   ],
   "keywords": [
     "gruntplugin",
