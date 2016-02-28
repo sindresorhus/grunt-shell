@@ -1,6 +1,6 @@
 {
   "name": "grunt-shell",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Run shell commands",
   "license": "MIT",
   "repository": "sindresorhus/grunt-shell",
