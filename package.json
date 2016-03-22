@@ -30,7 +30,8 @@
     "cli"
   ],
   "dependencies": {
-    "chalk": "^1.0.0"
+    "chalk": "^1.0.0",
+    "npm-run-path": "^1.0.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",

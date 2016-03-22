@@ -1,6 +1,7 @@
 'use strict';
 var exec = require('child_process').exec;
 var chalk = require('chalk');
+var npmRunPath = require('npm-run-path');
 
 module.exports = function (grunt) {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
@@ -10,7 +11,8 @@ module.exports = function (grunt) {
 			stderr: true,
 			stdin: true,
 			failOnError: true,
-			stdinRawMode: false
+			stdinRawMode: false,
+			preferLocal: false
 		});
 
 		var cmd = typeof this.data === 'string' ? this.data : this.data.command;
@@ -20,6 +22,11 @@ module.exports = function (grunt) {
 		}
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
+
+		if (options.preferLocal === true) {
+			var env = (options.execOptions && options.execOptions.env) || process.env;
+			env.path = npmRunPath(env);
+		}
 
 		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
 			if (typeof options.callback === 'function') {
