@@ -227,6 +227,13 @@ Lets you override the default callback with your own.
 
 **Make sure to call the `cb` method when you're done.**
 
+### preferLocal
+
+Type: `boolean`<br>
+Default: `false`
+
+When set to `true` prepends local and parent `./node_modules/.bin` paths to the env path before executing the command
+
 ### execOptions
 
 Type: `object`
