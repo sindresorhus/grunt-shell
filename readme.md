@@ -232,7 +232,7 @@ Lets you override the default callback with your own.
 Type: `boolean`<br>
 Default: `false`
 
-When set to `true` prepends local and parent `./node_modules/.bin` paths to the env path before executing the command
+When set to `true` will execute local binaries by name like npm run script
 
 ### execOptions
 
