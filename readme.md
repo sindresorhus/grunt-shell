@@ -232,7 +232,7 @@ Lets you override the default callback with your own.
 Type: `boolean`<br>
 Default: `false`
 
-When set to `true` will execute local binaries by name like npm run script
+Execute local binaries by name like [npm run-script](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
 
 ### execOptions
 
