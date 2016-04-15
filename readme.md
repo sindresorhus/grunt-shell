@@ -227,6 +227,13 @@ Lets you override the default callback with your own.
 
 **Make sure to call the `cb` method when you're done.**
 
+### preferLocal
+
+Type: `boolean`<br>
+Default: `false`
+
+When set to `true` will execute local binaries by name like npm run script
+
 ### execOptions
 
 Type: `object`
