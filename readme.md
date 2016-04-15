@@ -4,7 +4,7 @@
 
 A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
 
-**Use [StackOverflow](http://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
+**Use [Stack Overflow](http://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
 
 
 ## Install
@@ -70,9 +70,7 @@ You can also supply a function that returns the command:
 grunt.initConfig({
 	shell: {
 		hello: {
-			command: function () {
-				return 'echo hello';
-			}
+			command: () => 'echo hello'
 		}
 	}
 });
@@ -81,14 +79,12 @@ grunt.initConfig({
 Which can also take arguments:
 
 ```js
-module.exports = function(grunt) {
+module.exports = grunt => {
 	grunt.loadNpmTasks('grunt-shell');
 	grunt.initConfig({
 		shell: {
 			greet: {
-				command: function (greeting) {
-					return 'echo ' + greeting;
-				}
+				command: greeting => 'echo ' + greeting
 			}
 		}
 	});
@@ -176,52 +172,52 @@ grunt.initConfig({
 ### command
 
 *Required*<br>
-Type: `string`, `function`
+Type: `String` `Function`
 
-The command you want to run or a function which returns it. Supports underscore templates.
+Command to run or a function which returns the command. Supports underscore templates.
 
-*command can be omitted by directly setting the target with the command.*
+*Command can be omitted by directly setting the target with the command.*
 
 ## Options
 
 ### stdout
 
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `true`
 
-Show stdout in the Terminal.
+Show stdout in the terminal.
 
 ### stderr
 
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `true`
 
-Show stderr in the Terminal.
+Show stderr in the terminal.
 
 ### stdin
 
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `true`
 
 Forward the terminal's stdin to the command.
 
 ### failOnError
 
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `true`
 
-Fail task if it encounters an error. Does not apply if you specify a `callback`.
+Fail task if it encounters an error. Doesn't apply if you specify a `callback`.
 
 ### stdinRawMode
 
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `false`
 
-This sets `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs_setrawmode_mode).
+Set `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs_setrawmode_mode).
 
 ### callback(err, stdout, stderr, cb)
 
-Type: `function`
+Type: `Function`
 
 Lets you override the default callback with your own.
 
@@ -229,14 +225,14 @@ Lets you override the default callback with your own.
 
 ### preferLocal
 
-Type: `boolean`<br>
+Type: `Boolean`<br>
 Default: `false`
 
 Execute local binaries by name like [npm run-script](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
 
 ### execOptions
 
-Type: `object`
+Type: `Object`
 
 Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method:
 

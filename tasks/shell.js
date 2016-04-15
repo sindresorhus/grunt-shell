@@ -7,7 +7,7 @@ var objectAssign = require('object-assign');
 module.exports = function (grunt) {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
 		var cb = this.async();
-		var options = this.options({
+		var opts = this.options({
 			stdout: true,
 			stderr: true,
 			stdin: true,
@@ -27,16 +27,16 @@ module.exports = function (grunt) {
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
 
-		if (options.preferLocal === true) {
-			options.execOptions.env = options.execOptions.env || objectAssign({}, process.env);
-			options.execOptions.env.PATH = npmRunPath({path: options.execOptions.env.PATH});
+		if (opts.preferLocal === true) {
+			opts.execOptions.env = opts.execOptions.env || objectAssign({}, process.env);
+			opts.execOptions.env.PATH = npmRunPath({path: opts.execOptions.env.PATH});
 		}
 
-		var cp = exec(cmd, options.execOptions, function (err, stdout, stderr) {
-			if (typeof options.callback === 'function') {
-				options.callback.call(this, err, stdout, stderr, cb);
+		var cp = exec(cmd, opts.execOptions, function (err, stdout, stderr) {
+			if (typeof opts.callback === 'function') {
+				opts.callback.call(this, err, stdout, stderr, cb);
 			} else {
-				if (err && options.failOnError) {
+				if (err && opts.failOnError) {
 					grunt.warn(err);
 				}
 				cb();
@@ -55,19 +55,19 @@ module.exports = function (grunt) {
 
 		grunt.verbose.writeln('Command:', chalk.yellow(cmd));
 
-		if (options.stdout || grunt.option('verbose')) {
+		if (opts.stdout || grunt.option('verbose')) {
 			captureOutput(cp.stdout, process.stdout);
 		}
 
-		if (options.stderr || grunt.option('verbose')) {
+		if (opts.stderr || grunt.option('verbose')) {
 			captureOutput(cp.stderr, process.stderr);
 		}
 
-		if (options.stdin) {
+		if (opts.stdin) {
 			process.stdin.resume();
 			process.stdin.setEncoding('utf8');
 
-			if (options.stdinRawMode && process.stdin.isTTY) {
+			if (opts.stdinRawMode && process.stdin.isTTY) {
 				process.stdin.setRawMode(true);
 			}
 
