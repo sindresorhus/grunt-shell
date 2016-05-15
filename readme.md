@@ -112,6 +112,11 @@ Do whatever you want with the output.
 
 ```js
 function log(err, stdout, stderr, cb) {
+	if (err) {
+		cb(err);
+		return;
+	}
+
 	console.log(stdout);
 	cb();
 }
@@ -221,7 +226,7 @@ Type: `Function`
 
 Lets you override the default callback with your own.
 
-**Make sure to call the `cb` method when you're done.**
+**Make sure to call the `cb` method when you're done.** Supply an error as the first argument to `cb` to print a warning and cause the task to fail.
 
 ### preferLocal
 
