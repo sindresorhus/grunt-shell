@@ -32,6 +32,7 @@
   "dependencies": {
     "chalk": "^1.0.0",
     "npm-run-path": "^1.0.0",
+    "path-key": "^1.0.0",
     "object-assign": "^4.0.0"
   },
   "devDependencies": {
