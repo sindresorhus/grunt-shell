@@ -2,7 +2,6 @@
 var exec = require('child_process').exec;
 var chalk = require('chalk');
 var npmRunPath = require('npm-run-path');
-var objectAssign = require('object-assign');
 
 module.exports = function (grunt) {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
@@ -28,8 +27,7 @@ module.exports = function (grunt) {
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
 
 		if (opts.preferLocal === true) {
-			opts.execOptions.env = opts.execOptions.env || objectAssign({}, process.env);
-			opts.execOptions.env.PATH = npmRunPath({path: opts.execOptions.env.PATH});
+			opts.execOptions.env = npmRunPath.env({env: opts.execOptions.env || process.env});
 		}
 
 		var cp = exec(cmd, opts.execOptions, function (err, stdout, stderr) {
