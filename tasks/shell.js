@@ -1,12 +1,12 @@
 'use strict';
-var exec = require('child_process').exec;
-var chalk = require('chalk');
-var npmRunPath = require('npm-run-path');
+const exec = require('child_process').exec;
+const chalk = require('chalk');
+const npmRunPath = require('npm-run-path');
 
-module.exports = function (grunt) {
+module.exports = grunt => {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
-		var cb = this.async();
-		var opts = this.options({
+		const cb = this.async();
+		const opts = this.options({
 			stdout: true,
 			stderr: true,
 			stdin: true,
@@ -18,7 +18,7 @@ module.exports = function (grunt) {
 			}
 		});
 
-		var cmd = typeof this.data === 'string' ? this.data : this.data.command;
+		let cmd = typeof this.data === 'string' ? this.data : this.data.command;
 
 		if (cmd === undefined) {
 			throw new Error('`command` required');
@@ -30,7 +30,7 @@ module.exports = function (grunt) {
 			opts.execOptions.env = npmRunPath.env({env: opts.execOptions.env || process.env});
 		}
 
-		var cp = exec(cmd, opts.execOptions, function (err, stdout, stderr) {
+		const cp = exec(cmd, opts.execOptions, (err, stdout, stderr) => {
 			if (typeof opts.callback === 'function') {
 				opts.callback.call(this, err, stdout, stderr, cb);
 			} else {
@@ -39,11 +39,11 @@ module.exports = function (grunt) {
 				}
 				cb();
 			}
-		}.bind(this));
+		});
 
-		var captureOutput = function (child, output) {
+		const captureOutput = (child, output) => {
 			if (grunt.option('color') === false) {
-				child.on('data', function (data) {
+				child.on('data', data => {
 					output.write(chalk.stripColor(data));
 				});
 			} else {

@@ -10,7 +10,7 @@
     "url": "sindresorhus.com"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=4"
   },
   "scripts": {
     "test": "xo && grunt"
@@ -31,8 +31,7 @@
   ],
   "dependencies": {
     "chalk": "^1.0.0",
-    "npm-run-path": "^2.0.0",
-    "object-assign": "^4.0.0"
+    "npm-run-path": "^2.0.0"
   },
   "devDependencies": {
     "grunt": "^1.0.1",
@@ -41,5 +40,8 @@
   },
   "peerDependencies": {
     "grunt": ">=0.4.0"
+  },
+  "xo": {
+    "esnext": true
   }
 }

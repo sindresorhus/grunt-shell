@@ -1,7 +1,7 @@
 'use strict';
-module.exports = function (grunt) {
+module.exports = grunt => {
 	function log(err, stdout, stderr, cb) {
-		console.log('Directory listing:\n' + stdout);
+		console.log(`Directory listing:\n${stdout}`);
 		cb();
 	}
 
@@ -17,13 +17,13 @@ module.exports = function (grunt) {
 				}
 			},
 			fnCmd: {
-				command: function (version) {
+				command(version) {
 					// `this` is scoped to the grunt instance
 					if (version) {
-						return 'echo grunt-shell version: ' + version;
+						return `echo grunt-shell version: ${version}`;
 					}
 
-					return 'echo grunt version: ' + this.version;
+					return `echo grunt version: ${this.version}`;
 				}
 			},
 			callback: {

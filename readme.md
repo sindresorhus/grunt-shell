@@ -183,7 +183,7 @@ grunt.initConfig({
 ### command
 
 *Required*<br>
-Type: `String` `Function`
+Type: `string` `Function`
 
 Command to run or a function which returns the command. Supports underscore templates.
 
@@ -193,35 +193,35 @@ Command to run or a function which returns the command. Supports underscore temp
 
 ### stdout
 
-Type: `Boolean`<br>
+Type: `boolean`<br>
 Default: `true`
 
 Show stdout in the terminal.
 
 ### stderr
 
-Type: `Boolean`<br>
+Type: `boolean`<br>
 Default: `true`
 
 Show stderr in the terminal.
 
 ### stdin
 
-Type: `Boolean`<br>
+Type: `boolean`<br>
 Default: `true`
 
 Forward the terminal's stdin to the command.
 
 ### failOnError
 
-Type: `Boolean`<br>
+Type: `boolean`<br>
 Default: `true`
 
 Fail task if it encounters an error. Doesn't apply if you specify a `callback`.
 
 ### stdinRawMode
 
-Type: `Boolean`<br>
+Type: `boolean`<br>
 Default: `false`
 
 Set `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs_setrawmode_mode).
@@ -236,24 +236,24 @@ Lets you override the default callback with your own.
 
 ### preferLocal
 
-Type: `Boolean`<br>
+Type: `boolean`<br>
 Default: `false`
 
-Execute local binaries by name like [npm run-script](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
+Execute local binaries by name like [`$ npm run-script`](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
 
 ### execOptions
 
 Type: `Object`
 
-Specify some options to be passed to the [.exec()](http://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method:
+Specify some options to be passed to the [.exec()](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method:
 
-- `cwd` String *Current working directory of the child process*
+- `cwd` string *Current working directory of the child process*
 - `env` Object *Environment key-value pairs*
-- `setsid` Boolean
-- `encoding` String *(Default: 'utf8')*
-- `timeout` Number *(Default: 0)*
-- `maxBuffer` Number *(Default: 200\*1024)*
-- `killSignal` String *(Default: 'SIGTERM')*
+- `setsid` boolean
+- `encoding` string *(Default: `'utf8'`)*
+- `timeout` number *(Default: `0`)*
+- `maxBuffer` number *(Default: `200 * 1024`)*
+- `killSignal` string *(Default: `'SIGTERM'`)*
 
 
 ## License
