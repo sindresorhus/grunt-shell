@@ -237,7 +237,7 @@ Lets you override the default callback with your own.
 ### preferLocal
 
 Type: `boolean`<br>
-Default: `false`
+Default: `true`
 
 Execute local binaries by name like [`$ npm run-script`](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
 

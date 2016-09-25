@@ -12,7 +12,7 @@ module.exports = grunt => {
 			stdin: true,
 			failOnError: true,
 			stdinRawMode: false,
-			preferLocal: false,
+			preferLocal: true,
 			execOptions: {
 				env: null
 			}
