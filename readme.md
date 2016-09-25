@@ -252,7 +252,7 @@ Specify some options to be passed to the [.exec()](https://nodejs.org/api/child_
 - `setsid` boolean
 - `encoding` string *(Default: `'utf8'`)*
 - `timeout` number *(Default: `0`)*
-- `maxBuffer` number *(Default: `200 * 1024`)*
+- `maxBuffer` number *(Default: `1000 * 1000 * 10` → 10 MB)*
 - `killSignal` string *(Default: `'SIGTERM'`)*
 
 

@@ -3,6 +3,8 @@ const exec = require('child_process').exec;
 const chalk = require('chalk');
 const npmRunPath = require('npm-run-path');
 
+const TEN_MEGABYTES = 1000 * 1000 * 10;
+
 module.exports = grunt => {
 	grunt.registerMultiTask('shell', 'Run shell commands', function () {
 		const cb = this.async();
@@ -23,6 +25,10 @@ module.exports = grunt => {
 		if (cmd === undefined) {
 			throw new Error('`command` required');
 		}
+
+		// increase max buffer
+		opts.execOptions = Object.assign({}, opts.execOptions);
+		opts.execOptions.maxBuffer = opts.execOptions.maxBuffer || TEN_MEGABYTES;
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
 
