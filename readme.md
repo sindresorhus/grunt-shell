@@ -4,7 +4,7 @@
 
 A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
 
-**Use [Stack Overflow](http://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
+**Use [Stack Overflow](https://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
 
 ---
 
@@ -224,7 +224,7 @@ Fail task if it encounters an error. Doesn't apply if you specify a `callback`.
 Type: `boolean`<br>
 Default: `false`
 
-Set `stdin` to [act as a raw device](http://nodejs.org/api/tty.html#tty_rs_setrawmode_mode).
+Set `stdin` to [act as a raw device](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode).
 
 ### callback(err, stdout, stderr, cb)
 
@@ -239,7 +239,7 @@ Lets you override the default callback with your own.
 Type: `boolean`<br>
 Default: `true`
 
-Execute local binaries by name like [`$ npm run-script`](http://blog.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
+Execute local binaries by name like [`$ npm run-script`](https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
 
 ### execOptions
 
