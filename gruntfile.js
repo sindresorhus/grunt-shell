@@ -5,6 +5,16 @@ module.exports = grunt => {
 		cb();
 	}
 
+	let path = null;
+	function pathCallback(err, stdout, stderr, cb) {
+		if (path === null) {
+			path = stdout;
+		} else if (path !== stdout) {
+			grunt.fatal('Path shouldn\'t have changed!');
+		}
+		cb();
+	}
+
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 		shell: {
@@ -40,6 +50,12 @@ module.exports = grunt => {
 				options: {
 					failOnError: false
 				}
+			},
+			path: {
+				command: process.platform === 'win32' ? 'set path' : 'printenv PATH',
+				options: {
+					callback: pathCallback
+				}
 			}
 		}
 	});
@@ -48,6 +64,7 @@ module.exports = grunt => {
 
 	grunt.registerTask('default', [
 		'shell',
-		'shell:fnCmd:<%= pkg.version %>'
+		'shell:fnCmd:<%= pkg.version %>',
+		'shell:path'
 	]);
 };
