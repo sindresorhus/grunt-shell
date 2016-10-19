@@ -1,12 +1,25 @@
 'use strict';
 module.exports = grunt => {
-	function log(err, stdout, stderr, cb) {
-		console.log(`Directory listing:\n${stdout}`);
-		cb();
+	let checkCounter = 0;
+	function check(substring) {
+		checkCounter++;
+		return (err, stdout, stderr, cb) => {
+			if (err) {
+				grunt.fatal('Command failed');
+			}
+			if (stdout.indexOf(substring) === -1) {
+				grunt.fatal('Expected substring not found: ' + substring);
+			}
+			checkCounter--;
+			cb();
+		};
 	}
 
 	let path = null;
 	function pathCallback(err, stdout, stderr, cb) {
+		if (err) {
+			grunt.fatal('Command failed');
+		}
 		if (path === null) {
 			path = stdout;
 		} else if (path !== stdout) {
@@ -17,13 +30,31 @@ module.exports = grunt => {
 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+		testDir: 'tasks',
 		shell: {
-			subfolder: {
+			subfolder1: {
 				command: 'ls',
 				options: {
 					execOptions: {
 						cwd: 'tasks'
-					}
+					},
+					callback: check('shell.js')
+				}
+			},
+			subfolder2: {
+				command: 'ls',
+				options: {
+					execOptions: {
+						cwd: '<%= testDir %>'
+					},
+					callback: check('shell.js')
+				}
+			},
+			subfolder3: {
+				command: 'ls',
+				cwd: '<%= testDir %>',
+				options: {
+					callback: check('shell.js')
 				}
 			},
 			fnCmd: {
@@ -39,7 +70,7 @@ module.exports = grunt => {
 			callback: {
 				command: 'ls',
 				options: {
-					callback: log
+					callback: check('gruntfile.js')
 				}
 			},
 			withColor: {
@@ -62,9 +93,16 @@ module.exports = grunt => {
 
 	grunt.loadTasks('tasks');
 
+	grunt.registerTask('check', () => {
+		if (checkCounter > 0) {
+			grunt.fatal('Callbacks were not executed');
+		}
+	});
+
 	grunt.registerTask('default', [
 		'shell',
 		'shell:fnCmd:<%= pkg.version %>',
-		'shell:path'
+		'shell:path',
+		'check'
 	]);
 };

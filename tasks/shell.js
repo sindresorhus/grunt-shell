@@ -36,6 +36,10 @@ module.exports = grunt => {
 			opts.execOptions.env = npmRunPath.env({env: opts.execOptions.env || process.env});
 		}
 
+		if (this.data.cwd) {
+			opts.execOptions.cwd = this.data.cwd;
+		}
+
 		const cp = exec(cmd, opts.execOptions, (err, stdout, stderr) => {
 			if (typeof opts.callback === 'function') {
 				opts.callback.call(this, err, stdout, stderr, cb);
