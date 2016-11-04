@@ -189,6 +189,13 @@ Command to run or a function which returns the command. Supports underscore temp
 
 *Command can be omitted by directly setting the target with the command.*
 
+### cwd
+
+Type: `string`
+
+Shortcut. Same as `options.execOptions.cwd` (see below).
+
+
 ## Options
 
 ### stdout
