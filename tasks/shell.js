@@ -49,7 +49,7 @@ module.exports = grunt => {
 				}
 				cb();
 			}
-		});
+		}.bind(this));
 
 		const captureOutput = (child, output) => {
 			if (grunt.option('color') === false) {
