@@ -72,14 +72,18 @@ module.exports = grunt => {
 		}
 
 		if (opts.stdin) {
-			process.stdin.resume();
 			process.stdin.setEncoding('utf8');
 
 			if (opts.stdinRawMode && process.stdin.isTTY) {
 				process.stdin.setRawMode(true);
 			}
 
-			process.stdin.pipe(cp.stdin);
+			let chunk;
+			while (chunk = process.stdin.read()) { // eslint-disable-line no-cond-assign
+				cp.stdin.write(chunk);
+			}
 		}
+
+		cp.stdin.end();
 	});
 };
