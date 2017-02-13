@@ -64,6 +64,20 @@ module.exports = grunt => {
 					callback: check('shell.js')
 				}
 			},
+			'waiting-child': {
+				command: 'node waiting-child.js',
+				cwd: 'test',
+				options: {
+					callback: check('')
+				}
+			},
+			'waiting-child-pipe': {
+				command: 'echo abc | node waiting-child.js',
+				cwd: 'test',
+				options: {
+					callback: check('abc')
+				}
+			},
 			fnCmd: {
 				command(version) {
 					// `this` is scoped to the grunt instance
