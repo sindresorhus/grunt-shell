@@ -79,7 +79,9 @@ module.exports = grunt => {
 			}
 
 			let chunk;
-			while (chunk = process.stdin.read()) cp.stdin.write(chunk);
+			while (chunk = process.stdin.read()) { // eslint-disable-line no-cond-assign
+				cp.stdin.write(chunk);
+			}
 		}
 
 		cp.stdin.end();
