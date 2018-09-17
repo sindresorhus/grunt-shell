@@ -20,7 +20,9 @@ module.exports = grunt => {
 			}
 		});
 
-		let cmd = typeof this.data === 'string' ? this.data : this.data.command;
+		let cmd = typeof this.data === 'string' || typeof this.data === 'function' ?
+			this.data :
+			this.data.command;
 
 		if (cmd === undefined) {
 			throw new Error('`command` required');
