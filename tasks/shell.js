@@ -26,7 +26,7 @@ module.exports = grunt => {
 			throw new Error('`command` required');
 		}
 
-		// increase max buffer
+		// Increase max buffer
 		opts.execOptions = Object.assign({}, opts.execOptions);
 		opts.execOptions.maxBuffer = opts.execOptions.maxBuffer || TEN_MEGABYTES;
 
