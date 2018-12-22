@@ -1,14 +1,14 @@
 'use strict';
-const exec = require('child_process').exec;
+const {exec} = require('child_process');
 const chalk = require('chalk');
 const npmRunPath = require('npm-run-path');
 
 const TEN_MEGABYTES = 1000 * 1000 * 10;
 
 module.exports = grunt => {
-	grunt.registerMultiTask('shell', 'Run shell commands', function () {
-		const cb = this.async();
-		const opts = this.options({
+	grunt.registerMultiTask('shell', 'Run shell commands', function (...args) {
+		const callback = this.async();
+		const options = this.options({
 			stdout: true,
 			stderr: true,
 			stdin: true,
@@ -20,7 +20,7 @@ module.exports = grunt => {
 			}
 		});
 
-		let cmd = typeof this.data === 'string' || typeof this.data === 'function' ?
+		let cmd = (typeof this.data === 'string' || typeof this.data === 'function') ?
 			this.data :
 			this.data.command;
 
@@ -29,27 +29,27 @@ module.exports = grunt => {
 		}
 
 		// Increase max buffer
-		opts.execOptions = Object.assign({}, opts.execOptions);
-		opts.execOptions.maxBuffer = opts.execOptions.maxBuffer || TEN_MEGABYTES;
+		options.execOptions = Object.assign({}, options.execOptions);
+		options.execOptions.maxBuffer = options.execOptions.maxBuffer || TEN_MEGABYTES;
 
-		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments) : cmd);
+		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, args) : cmd);
 
-		if (opts.preferLocal === true) {
-			opts.execOptions.env = npmRunPath.env({env: opts.execOptions.env || process.env});
+		if (options.preferLocal === true) {
+			options.execOptions.env = npmRunPath.env({env: options.execOptions.env || process.env});
 		}
 
 		if (this.data.cwd) {
-			opts.execOptions.cwd = this.data.cwd;
+			options.execOptions.cwd = this.data.cwd;
 		}
 
-		const cp = exec(cmd, opts.execOptions, (err, stdout, stderr) => {
-			if (typeof opts.callback === 'function') {
-				opts.callback.call(this, err, stdout, stderr, cb);
+		const cp = exec(cmd, options.execOptions, (error, stdout, stderr) => {
+			if (typeof options.callback === 'function') {
+				options.callback.call(this, error, stdout, stderr, callback);
 			} else {
-				if (err && opts.failOnError) {
-					grunt.warn(err);
+				if (error && options.failOnError) {
+					grunt.warn(error);
 				}
-				cb();
+				callback();
 			}
 		});
 
@@ -65,19 +65,19 @@ module.exports = grunt => {
 
 		grunt.verbose.writeln('Command:', chalk.yellow(cmd));
 
-		if (opts.stdout || grunt.option('verbose')) {
+		if (options.stdout || grunt.option('verbose')) {
 			captureOutput(cp.stdout, process.stdout);
 		}
 
-		if (opts.stderr || grunt.option('verbose')) {
+		if (options.stderr || grunt.option('verbose')) {
 			captureOutput(cp.stderr, process.stderr);
 		}
 
-		if (opts.stdin) {
+		if (options.stdin) {
 			process.stdin.resume();
 			process.stdin.setEncoding('utf8');
 
-			if (opts.stdinRawMode && process.stdin.isTTY) {
+			if (options.stdinRawMode && process.stdin.isTTY) {
 				process.stdin.setRawMode(true);
 			}
 

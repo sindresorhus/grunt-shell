@@ -2,15 +2,9 @@
 
 > Run shell commands
 
-A good way to interact with other CLI tools. E.g. compiling Compass `compass compile` or get the current git branch `git branch`.
+A good way to interact with other CLI tools. For example, get the current Git branch with `git branch`.
 
 **Use [Stack Overflow](https://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
-
----
-
-<p align="center"><b>🔥 Want to strengthen your core JavaScript skills and master ES6?</b><br>I would personally recommend this awesome <a href="https://ES6.io/friend/AWESOME">ES6 course</a> by Wes Bos.</p>
-
----
 
 
 ## Install
@@ -19,11 +13,15 @@ A good way to interact with other CLI tools. E.g. compiling Compass `compass com
 $ npm install --save-dev grunt-shell
 ```
 
+<a href="https://www.patreon.com/sindresorhus">
+	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 
 ## Usage
 
 ```js
-require('load-grunt-tasks')(grunt); // npm install --save-dev load-grunt-tasks
+require('load-grunt-tasks')(grunt);
 
 grunt.initConfig({
 	shell: {
@@ -33,7 +31,7 @@ grunt.initConfig({
 		target: {
 			command: 'ls'
 		},
-		another: 'ls ./src' // shorthand
+		another: 'ls ./src' // Shorthand
 	}
 });
 
@@ -90,7 +88,7 @@ module.exports = grunt => {
 	grunt.initConfig({
 		shell: {
 			greet: {
-				command: greeting => 'echo ' + greeting
+				command: greeting => `echo ${greeting}`
 			}
 		}
 	});
@@ -117,14 +115,14 @@ grunt.initConfig({
 Do whatever you want with the output.
 
 ```js
-function log(err, stdout, stderr, cb) {
-	if (err) {
-		cb(err);
+function log(error, stdout, stderr, callback) {
+	if (error) {
+		callback(error);
 		return;
 	}
 
 	console.log(stdout);
-	cb();
+	callback();
 }
 
 grunt.initConfig({
@@ -141,7 +139,7 @@ grunt.initConfig({
 
 ### Option passed to the .exec() method
 
-Run a command in another directory. In this example we run it in a subfolder using the `cwd` (current working directory) option.
+Run a command in another directory. In this example, we run it in a subfolder using the `cwd` (current working directory) option.
 
 ```js
 grunt.initConfig({
@@ -233,13 +231,13 @@ Default: `false`
 
 Set `stdin` to [act as a raw device](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode).
 
-### callback(err, stdout, stderr, cb)
+### callback(error, stdout, stderr, callback)
 
 Type: `Function`
 
 Lets you override the default callback with your own.
 
-**Make sure to call the `cb` method when you're done.** Supply an error as the first argument to `cb` to print a warning and cause the task to fail.
+**Make sure to call the `callback` method when you're done.** Supply an error as the first argument to `callback` to print a warning and cause the task to fail.
 
 ### preferLocal
 

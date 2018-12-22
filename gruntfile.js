@@ -1,13 +1,14 @@
 'use strict';
+
 module.exports = grunt => {
 	let checkCounter = 0;
 
 	function check(substring) {
 		checkCounter++;
 
-		return (err, stdout, stderr, cb) => {
-			if (err) {
-				grunt.fatal(`Command failed: ${err}`);
+		return (error, stdout, stderr, callback) => {
+			if (error) {
+				grunt.fatal(`Command failed: ${error}`);
 			}
 
 			if (!stdout.includes(substring)) {
@@ -15,15 +16,15 @@ module.exports = grunt => {
 			}
 
 			checkCounter--;
-			cb();
+			callback();
 		};
 	}
 
 	let path = null;
 
-	function pathCallback(err, stdout, stderr, cb) {
-		if (err) {
-			grunt.fatal(`Command failed: ${err}`);
+	function pathCallback(error, stdout, stderr, callback) {
+		if (error) {
+			grunt.fatal(`Command failed: ${error}`);
 		}
 
 		if (path === null) {
@@ -32,7 +33,7 @@ module.exports = grunt => {
 			grunt.fatal('Path shouldn\'t have changed!');
 		}
 
-		cb();
+		callback();
 	}
 
 	grunt.initConfig({
