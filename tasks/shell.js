@@ -1,6 +1,7 @@
 'use strict';
 const {exec} = require('child_process');
 const chalk = require('chalk');
+const stripAnsi = require('strip-ansi');
 const npmRunPath = require('npm-run-path');
 
 const TEN_MEGABYTES = 1000 * 1000 * 10;
@@ -56,7 +57,7 @@ module.exports = grunt => {
 		const captureOutput = (child, output) => {
 			if (grunt.option('color') === false) {
 				child.on('data', data => {
-					output.write(chalk.stripColor(data));
+					output.write(stripAnsi(data));
 				});
 			} else {
 				child.pipe(output);

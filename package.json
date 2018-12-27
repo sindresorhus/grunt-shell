@@ -31,7 +31,8 @@
 	],
 	"dependencies": {
 		"chalk": "^2.4.1",
-		"npm-run-path": "^2.0.0"
+		"npm-run-path": "^2.0.0",
+		"strip-ansi": "^5.0.0"
 	},
 	"devDependencies": {
 		"grunt": "^1.0.1",
