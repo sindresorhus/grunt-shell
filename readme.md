@@ -4,18 +4,12 @@
 
 A good way to interact with other CLI tools. For example, get the current Git branch with `git branch`.
 
-**Use [Stack Overflow](https://stackoverflow.com/questions/tagged/gruntjs) for support questions.**
-
 
 ## Install
 
 ```
 $ npm install --save-dev grunt-shell
 ```
-
-<a href="https://www.patreon.com/sindresorhus">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
 
 
 ## Usage
@@ -181,7 +175,7 @@ grunt.initConfig({
 ### command
 
 *Required*<br>
-Type: `string` `Function`
+Type: `string | Function`
 
 Command to run or a function which returns the command. Supports underscore templates.
 
@@ -248,7 +242,7 @@ Execute local binaries by name like [`$ npm run-script`](https://www.keithcirkel
 
 ### execOptions
 
-Type: `Object`
+Type: `object`
 
 Specify some options to be passed to the [.exec()](https://nodejs.org/api/child_process.html#child_process_child_process_exec_command_options_callback) method:
 
@@ -259,8 +253,3 @@ Specify some options to be passed to the [.exec()](https://nodejs.org/api/child_
 - `timeout` number *(Default: `0`)*
 - `maxBuffer` number *(Default: `1000 * 1000 * 10` → 10 MB)*
 - `killSignal` string *(Default: `'SIGTERM'`)*
-
-
-## License
-
-MIT © [Sindre Sorhus](https://sindresorhus.com)
