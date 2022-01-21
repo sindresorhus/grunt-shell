@@ -30,7 +30,7 @@ module.exports = grunt => {
 		}
 
 		// Increase max buffer
-		options.execOptions = Object.assign({}, options.execOptions);
+		options.execOptions = {...options.execOptions};
 		options.execOptions.maxBuffer = options.execOptions.maxBuffer || TEN_MEGABYTES;
 
 		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, args) : cmd);
