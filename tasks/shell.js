@@ -7,7 +7,7 @@ const npmRunPath = require('npm-run-path');
 const TEN_MEGABYTES = 1000 * 1000 * 10;
 
 module.exports = grunt => {
-	grunt.registerMultiTask('shell', 'Run shell commands', function (...args) {
+	grunt.registerMultiTask('shell', 'Run shell commands', function (...arguments_) {
 		const callback = this.async();
 		const options = this.options({
 			stdout: true,
@@ -30,10 +30,10 @@ module.exports = grunt => {
 		}
 
 		// Increase max buffer
-		options.execOptions = Object.assign({}, options.execOptions);
+		options.execOptions = {...options.execOptions};
 		options.execOptions.maxBuffer = options.execOptions.maxBuffer || TEN_MEGABYTES;
 
-		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, args) : cmd);
+		cmd = grunt.template.process(typeof cmd === 'function' ? cmd.apply(grunt, arguments_) : cmd);
 
 		if (options.preferLocal === true) {
 			options.execOptions.env = npmRunPath.env({env: options.execOptions.env || process.env});

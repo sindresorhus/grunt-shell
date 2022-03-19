@@ -4,13 +4,14 @@
 	"description": "Run shell commands",
 	"license": "MIT",
 	"repository": "sindresorhus/grunt-shell",
+	"funding": "https://github.com/sponsors/sindresorhus",
 	"author": {
 		"name": "Sindre Sorhus",
 		"email": "sindresorhus@gmail.com",
-		"url": "sindresorhus.com"
+		"url": "https://sindresorhus.com"
 	},
 	"engines": {
-		"node": ">=6"
+		"node": ">=12"
 	},
 	"scripts": {
 		"test": "xo && grunt"
@@ -30,9 +31,9 @@
 		"cli"
 	],
 	"dependencies": {
-		"chalk": "^2.4.1",
+		"chalk": "^3.0.0",
 		"npm-run-path": "^2.0.0",
-		"strip-ansi": "^5.0.0"
+		"strip-ansi": "^6.0.1"
 	},
 	"devDependencies": {
 		"grunt": "^1.0.1",

@@ -4,13 +4,11 @@
 
 A good way to interact with other CLI tools. For example, get the current Git branch with `git branch`.
 
-
 ## Install
 
+```sh
+npm install --save-dev grunt-shell
 ```
-$ npm install --save-dev grunt-shell
-```
-
 
 ## Usage
 
@@ -31,7 +29,6 @@ grunt.initConfig({
 
 grunt.registerTask('default', ['shell']);
 ```
-
 
 ## Examples
 
@@ -174,7 +171,7 @@ grunt.initConfig({
 
 ### command
 
-*Required*<br>
+*Required*\
 Type: `string | Function`
 
 Command to run or a function which returns the command. Supports underscore templates.
@@ -187,40 +184,39 @@ Type: `string`
 
 Shortcut. Same as `options.execOptions.cwd` (see below).
 
-
 ## Options
 
 ### stdout
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Show stdout in the terminal.
 
 ### stderr
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Show stderr in the terminal.
 
 ### stdin
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Forward the terminal's stdin to the command.
 
 ### failOnError
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
-Fail task if it encounters an error. Doesn't apply if you specify a `callback`.
+Fail task if it encounters an error. Does not apply if you specify a `callback`.
 
 ### stdinRawMode
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `false`
 
 Set `stdin` to [act as a raw device](https://nodejs.org/api/tty.html#tty_readstream_setrawmode_mode).
@@ -235,7 +231,7 @@ Lets you override the default callback with your own.
 
 ### preferLocal
 
-Type: `boolean`<br>
+Type: `boolean`\
 Default: `true`
 
 Execute local binaries by name like [`$ npm run-script`](https://www.keithcirkel.co.uk/how-to-use-npm-as-a-build-tool/).
