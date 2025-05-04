@@ -166,7 +166,6 @@ grunt.initConfig({
 });
 ```
 
-
 ## Config
 
 ### command
@@ -213,6 +212,13 @@ Type: `boolean`\
 Default: `true`
 
 Fail task if it encounters an error. Does not apply if you specify a `callback`.
+
+### hideCommand
+
+Type: `boolean`\
+Default: `false`
+
+Don’t show the command in the terminal. Set the value `true` if your command contains credentials as tokens or API keys.
 
 ### stdinRawMode
 

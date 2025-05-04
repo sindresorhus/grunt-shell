@@ -14,6 +14,7 @@ module.exports = grunt => {
 			stderr: true,
 			stdin: true,
 			failOnError: true,
+			hideCommand: false,
 			stdinRawMode: false,
 			preferLocal: true,
 			execOptions: {
@@ -48,7 +49,11 @@ module.exports = grunt => {
 				options.callback.call(this, error, stdout, stderr, callback);
 			} else {
 				if (error && options.failOnError) {
-					grunt.warn(error);
+					if (options.hideCommand) {
+						grunt.warn('Your command with credentials is failed. Temporary disable the option hideCommand on your local machine to see details.');
+					} else {
+						grunt.warn(error);
+					}
 				}
 				callback();
 			}
@@ -64,13 +69,21 @@ module.exports = grunt => {
 			}
 		};
 
-		grunt.verbose.writeln('Command:', chalk.yellow(cmd));
+		let displayedCommand;
 
-		if (options.stdout || grunt.option('verbose')) {
+		if (options.hideCommand) {
+			displayedCommand = 'The command with credentials. Not printed in the terminal.';
+		} else {
+			displayedCommand = cmd;
+		}
+
+		grunt.verbose.writeln('Command:', chalk.yellow(displayedCommand));
+
+		if ((options.stdout || grunt.option('verbose')) && !options.hideCommand) {
 			captureOutput(cp.stdout, process.stdout);
 		}
 
-		if (options.stderr || grunt.option('verbose')) {
+		if ((options.stderr || grunt.option('verbose')) && !options.hideCommand) {
 			captureOutput(cp.stderr, process.stderr);
 		}
 
